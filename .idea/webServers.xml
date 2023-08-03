@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="53de5810-1b7a-4ee1-99ee-50730c639c9e" name="Text2Vis_release">
+        <fileTransfer accessType="SFTP" host="172.26.190.59" port="22" sshConfigId="9c245905-530f-44cc-a842-b082b119261e" sshConfig="harry@172.26.190.59:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
