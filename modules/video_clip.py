@@ -126,28 +126,95 @@ class video_header(nn.Module):
 
 
 class VideoCLIP(nn.Module):
-    def __init__(self, clip_model, video_header, n_seg) :
+    def __init__(self, clip_model, video_header, n_seg, use_restoration):
         super(VideoCLIP, self).__init__()
         self.visual = clip_model.visual
+        # self.visual.required_grad = False
         self.fusion_model = video_header
         self.n_seg = n_seg
         self.logit_scale = clip_model.logit_scale
+        self.use_restoration = use_restoration
+        if self.use_restoration:
+            self.restore_frame_position_embeddings = nn.Embedding(77, 512)
+            self.restore_model = TemporalTransformer(width=512, layers=3, heads=512//64)
 
-    def forward(self, image, text_emb):
-        image_emb = self.encode_image(image)
+    def forward(self, image, text_emb, image_restoration=None):
+        image_restoration_embedding = None
+        image_restoration_target = None
+        if self.use_restoration:
+            image_emb = self.encode_image(image, self.n_seg)
+            image_restoration_embedding = self.restore_image(image_emb)
+            list_embedding = []
+            for ind in range(self.n_seg-1):
+                list_embedding.append(image_emb[:, ind, :])
+                list_embedding.append(image_restoration_embedding[:, ind, :])
+            list_embedding.append(image_emb[:, -1, :])
+            image_emb = torch.stack(list_embedding, dim=1)
+            with torch.no_grad():
+                image_restoration_target = self.encode_image(image_restoration, self.n_seg-1)
+
+        else:
+            image_emb = self.encode_image(image, self.n_seg)
+        image_emb = self.fusion_model(image_emb)
         image_emb = image_emb / image_emb.norm(dim=-1, keepdim=True)
         text_emb = text_emb / text_emb.norm(dim=-1, keepdim=True)
         logit_scale = self.logit_scale.exp()
         logits = logit_scale * image_emb @ text_emb.t()
-        return logits
+        if self.use_restoration:
+            return logits, image_restoration_embedding, image_restoration_target
+        else:
+            return logits
 
-    def encode_image(self, image):
+    def test(self, image, rest=None):
+        if self.use_restoration:
+            image_emb = self.encode_image(image, self.n_seg)
+            image_restoration_embedding = self.restore_image(image_emb)
+            list_embedding = []
+            for ind in range(self.n_seg-1):
+                list_embedding.append(image_emb[:, ind, :])
+                list_embedding.append(image_restoration_embedding[:, ind, :])
+            list_embedding.append(image_emb[:, -1, :])
+            image_emb = torch.stack(list_embedding, dim=1)
+        else:
+            image_emb = self.encode_image(image, self.n_seg)
+        image_emb = self.fusion_model(image_emb)
+        return image_emb
+
+    def encode_image(self, image, n_seg):
         bt = image.size(0)
-        b = bt // self.n_seg
+        b = bt // n_seg
         image_emb = self.visual(image)
-        if image_emb.size(0) == b: # joint
+        if image_emb.size(0) == b:# joint
             return image_emb
         else:
-            image_emb = image_emb.view(b, self.n_seg, -1)
-            image_emb = self.fusion_model(image_emb)
+            image_emb = image_emb.view(b, n_seg, -1)
             return image_emb
+
+    def restore_image(self, image):
+        x_original = image
+        seq_length = 2
+        position_ids = torch.arange(seq_length, dtype=torch.long, device=image.device)
+        position_id = position_ids.unsqueeze(0).expand(image.size(0), -1)
+        frame_position_embeddings = self.restore_frame_position_embeddings(position_id)
+        res_list = []
+        for i in range(image.shape[1] - 1):
+            input_left = image[:, i, :]
+            input_right = image[:, i + 1, :]
+            input_original = torch.stack((input_left, input_right), dim=1)
+            input_original_b = torch.stack((input_right, input_left), dim=1)
+            input_x = input_original + frame_position_embeddings
+            input_x_b = input_original_b + frame_position_embeddings
+            input_x = input_x.permute(1, 0, 2)  # NLD -> LND
+            input_x = self.restore_model(input_x)
+            input_x = input_x.permute(1, 0, 2)  # LND -> NLD
+
+            input_x_b = input_x_b.permute(1, 0, 2)  # NLD -> LND
+            input_x_b = self.restore_model(input_x_b)
+            input_x_b = input_x_b.permute(1, 0, 2)  # LND -> NLD
+
+            input_x = 2/4 * input_x_b + 2/4 * input_x
+            mid_feat = input_x.mean(dim=1, keepdim=False)
+            res_list.append(mid_feat)
+
+        restoration = torch.stack(res_list, dim=1)
+        return restoration.type(x_original.dtype)

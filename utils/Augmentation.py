@@ -1,49 +1,50 @@
-from datasets.transforms import *
+# Code for "ActionCLIP: ActionCLIP: A New Paradigm for Action Recognition"
+# arXiv:
+# Mengmeng Wang, Jiazheng Xing, Yong Liu
 
-def train_augmentation(input_size, flip=True):
-    if flip:
-        return torchvision.transforms.Compose([
-            GroupRandomSizedCrop(input_size),
-            GroupRandomHorizontalFlip(is_flow=False)])
-    else:
-        return torchvision.transforms.Compose([
-            GroupMultiScaleCrop(input_size, [1, .875, .75, .66]),
-            GroupRandomHorizontalFlip_sth()])
+from datasets.transforms import *
+from randaugment import RandAugment
+
+
+class GroupTransform(object):
+    def __init__(self, transform):
+        self.worker = transform
+
+    def __call__(self, img_group):
+        return [self.worker(img) for img in img_group]
 
 
 def get_augmentation(training, config):
     input_mean = [0.48145466, 0.4578275, 0.40821073]
     input_std = [0.26862954, 0.26130258, 0.27577711]
-    scale_size = 256 if config.data.input_size == 224 else config.data.input_size
-
-    normalize = GroupNormalize(input_mean, input_std)
-    if 'something' in config.data.dataset:
-        groupscale = GroupScale((240, 320))
-    else:
-        groupscale = GroupScale(int(scale_size))
-
+    scale_size = config.data.input_size * 256 // 224
     if training:
-        train_aug = train_augmentation(
-            config.data.input_size,
-            flip=False if 'something' in config.data.dataset else True)
 
-        unique = torchvision.transforms.Compose([
-            groupscale,
-            train_aug,
-            GroupRandomGrayscale(p=0.2),
-        ])
+        unique = torchvision.transforms.Compose([GroupMultiScaleCrop(config.data.input_size, [1, .875, .75, .66]),
+                                                 GroupRandomHorizontalFlip(is_sth='some' in config.data.dataset),
+                                                 GroupRandomColorJitter(p=0.8, brightness=0.4, contrast=0.4,
+                                                                        saturation=0.2, hue=0.1),
+                                                 GroupRandomGrayscale(p=0.2),
+                                                 GroupGaussianBlur(p=0.0),
+                                                 GroupSolarization(p=0.0)]
+                                                )
     else:
-        unique = torchvision.transforms.Compose([
-            groupscale,
-            GroupCenterCrop(config.data.input_size)])
+        unique = torchvision.transforms.Compose([GroupScale(scale_size),
+                                                 GroupCenterCrop(config.data.input_size)])
 
-    common = torchvision.transforms.Compose([
-        Stack(roll=False),
-        ToTorchFormatTensor(div=True),
-        normalize])
+    common = torchvision.transforms.Compose([Stack(roll=False),
+                                             ToTorchFormatTensor(div=True),
+                                             GroupNormalize(input_mean,
+                                                            input_std)])
     return torchvision.transforms.Compose([unique, common])
 
 
-
-
-
+def randAugment(transform_train, config):
+    print('Using RandAugment!')
+    # print(config.data.randaug.N)
+    # print(config.data.randaug.M)
+    # print(RandAugment())
+    # print(GroupTransform(RandAugment()))
+    # print(RandAugment(config.data.randaug.N, config.data.randaug.M))
+    transform_train.transforms.insert(0, GroupTransform(RandAugment()))
+    return transform_train

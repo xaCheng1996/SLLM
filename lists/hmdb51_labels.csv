@@ -1,52 +1,52 @@
-id,name
-0,brush hair
-1,cartwheel
-2,catch
-3,chew
-4,clap
-5,climb
-6,climb stairs
-7,dive
-8,draw sword
-9,dribble
-10,drink
-11,eat
-12,fall floor
-13,fencing
-14,flic flac
-15,golf
-16,handstand
-17,hit
-18,hug
-19,jump
-20,kick
-21,kick ball
-22,kiss
-23,laugh
-24,pick
-25,pour
-26,pullup
-27,punch
-28,push
-29,pushup
-30,ride bike
-31,ride horse
-32,run
-33,shake hands
-34,shoot ball
-35,shoot bow
-36,shoot gun
-37,sit
-38,situp
-39,smile
-40,smoke
-41,somersault
-42,stand
-43,swing baseball
-44,sword
-45,sword exercise
-46,talk
-47,throw
-48,turn
-49,walk
-50,wave
+id;name;cap
+0;brush hair;Demonstrating the proper technique for brushing hair, with a focus on different types of hair, brushes, and combs for maintaining healthy and shiny hair.
+1;cartwheel;Displaying the grace and agility required for performing a cartwheel, with a focus on proper form, progressions, and variations for this classic gymnastics move.
+2;catch;Showing the hand-eye coordination and precision required for catching a ball, with a focus on different types of balls, grips, and techniques for successful catches.
+3;chew;Highlighting the importance and technique of chewing food properly, with a focus on different types of food, chewing styles, and benefits for digestion and overall health.
+4;clap;Demonstrating the rhythm and coordination required for clapping hands, with a focus on different types of claps, rhythms, and techniques for musical performance and entertainment.
+5;climb;Showing the strength and skill required for climbing, with a focus on different types of surfaces, techniques for gripping, and safety considerations for this activity.
+6;climb stairs;Highlighting the health benefits and technique for climbing stairs, with a focus on different types of stairs, variations, and progressions for building cardiovascular fitness and lower body strength.
+7;dive;Featuring the courage and technique required for diving, with a focus on different types of dives, take-offs, and entries for maximum height and distance.
+8;draw sword;Demonstrating the grace and power of drawing a sword, with a focus on different types of swords, grips, and techniques for martial arts and stage combat.
+9;dribble;Highlighting the skill and agility required for dribbling a ball, with a focus on different types of balls, surfaces, and techniques for basketball, soccer, and other sports.
+10;drink;Showing the technique and etiquette for drinking various types of beverages, with a focus on different types of cups, glasses, and drinks for social occasions and daily life.
+11;eat;Demonstrating the proper table manners and technique for eating different types of food, with a focus on utensils, etiquette, and cultural considerations for dining.
+12;fall floor;Highlighting the safety and injury prevention techniques for falling safely to the floor, with a focus on different types of falls, surfaces, and techniques for martial arts, dance, and other activities.
+13;fencing;Featuring the precision and strategy of fencing, with a focus on different types of weapons, techniques for parrying and thrusting, and rules of the sport.
+14;flic flac;Displaying the skill and athleticism required for performing a flic flac, with a focus on proper form, progressions, and variations for this advanced gymnastics move.
+15;golf;Demonstrating the technique and etiquette for playing golf, with a focus on different types of clubs, shots, and strategies for the course.
+16;handstand;Highlighting the strength and balance required for performing a handstand, with a focus on proper form, progressions, and variations for this classic gymnastics move.
+17;hit;Showing the power and technique required for hitting a ball, with a focus on different types of balls, grips, and techniques for baseball, softball, tennis, and other sports.
+18;hug;Demonstrating the proper technique and etiquette for giving a hug, with a focus on different types of hugs, cultural considerations, and benefits for physical and emotional well-being.
+19;jump;Featuring the explosiveness and technique required for jumping, with a focus on different types of jumps, surfaces, and techniques for sports, dance, and fitness.
+20;kick ball;Highlighting the skill and power required for kicking a ball, with a focus on different types of balls
+21;kick;Showing the power and technique required for kicking, with a focus on different types of kicks, surfaces, and techniques for martial arts, soccer, and other sports.
+22;kiss;Demonstrating the proper technique and etiquette for kissing, with a focus on different types of kisses, cultural considerations, and benefits for physical and emotional well-being.
+23;laugh;Featuring the joy and benefits of laughing, with a focus on different types of laughter, cultural considerations, and benefits for physical and emotional well-being.
+24;pick;Highlighting the technique and etiquette for picking up different objects, with a focus on different types of objects, grips, and techniques for daily life and workplace safety.
+25;pour;Showing the technique and etiquette for pouring various types of liquids, with a focus on different types of containers, pours, and drinks for social occasions and daily life.
+26;pullup;Demonstrating the strength and endurance required for performing pull-ups, with a focus on proper form, progressions, and variations for building upper body strength and stability.
+27;punch;Highlighting the power and technique required for punching, with a focus on different types of punches, surfaces, and techniques for martial arts, boxing, and other sports.
+28;push;Showing the technique and etiquette for pushing different objects, with a focus on different types of objects, grips, and techniques for daily life and workplace safety.
+29;pushup;Demonstrating the versatility and convenience of push-ups as a full body workout, with a focus on proper form, variations, and benefits for building upper body strength and stability.
+30;ride bike;Featuring the fun and fitness benefits of riding a bike, with a focus on different types of bikes, techniques for riding, and safety considerations for this activity.
+31;ride horse;Highlighting the technique and etiquette for riding a horse, with a focus on different types of horses, equipment, and riding styles for this popular sport and hobby.
+32;run;Showing the cardiovascular fitness and technique required for running, with a focus on different types of surfaces, distances, and techniques for sports, fitness, and daily life.
+33;shake hands;Demonstrating the proper technique and etiquette for shaking hands, with a focus on different types of handshakes, cultural considerations, and benefits for networking and social interactions.
+34;shoot ball;Highlighting the skill and power required for shooting a ball, with a focus on different types of balls, techniques for aiming, and strategies for scoring in basketball, soccer, and other sports.
+35;shoot bow;Featuring the skill and technique required for shooting a bow, with a focus on different types of bows, arrows, and techniques for archery and hunting.
+36;shoot gun;Showing the responsibility and safety considerations for shooting a gun, with a focus on different types of guns, grips, and techniques for hunting, recreational shooting, and self-defense.
+37;sit;Demonstrating the proper posture and etiquette for sitting, with a focus on different types of chairs, cultural considerations, and benefits for comfort and productivity.
+38;situp;Demonstrating the technique and benefits of sit-ups as a core exercise, with a focus on proper form, variations, and benefits for building abdominal strength and stability.
+39;smile;Highlighting the positive effects and etiquette of smiling, with a focus on different types of smiles, cultural considerations, and benefits for physical and emotional well-being.
+40;smoke;Showing the health risks and etiquette considerations for smoking, with a focus on different types of smoking products, health effects, and benefits of quitting.
+41;somersault;Displaying the skill and athleticism required for performing a somersault, with a focus on proper form, progressions, and variations.
+42;stand;Demonstrating the proper posture and technique for standing, with a focus on different types of surfaces, cultural considerations, and benefits for comfort and productivity.
+43;swing baseball;Highlighting the skill and power required for swinging a baseball bat, with a focus on different types of bats, grips, and techniques for hitting a ball.
+44;sword exercise;Displaying the discipline and precision required for practicing sword exercises, with a focus on different types of swords, movements, and benefits for martial arts and stage combat.
+45;sword;Demonstrating the grace and power of wielding a sword, with a focus on different types of swords, grips, and techniques for martial arts and stage combat.
+46;talk;Highlighting the art and technique of communication through talking, with a focus on different types of conversations, etiquette, and benefits for social and professional interactions.
+47;throw;Showing the technique and power required for throwing different objects, with a focus on different types of objects, grips, and techniques for sports, daily life, and workplace safety.
+48;turn;Demonstrating the technique and agility required for turning, with a focus on different types of turns, surfaces, and techniques for sports, dance, and daily life.
+49;walk;Highlighting the benefits and technique of walking, with a focus on different types of walking, techniques for posture and balance, and benefits for fitness and mental health.
+50;wave;Demonstrating the technique and etiquette for waving, with a focus on different types of waves, cultural considerations, and benefits for social interactions and greetings.

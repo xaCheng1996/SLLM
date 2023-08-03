@@ -1,102 +1,102 @@
-id,name
-0,ApplyEyeMakeup
-1,ApplyLipstick
-2,Archery
-3,BabyCrawling
-4,BalanceBeam
-5,BandMarching
-6,BaseballPitch
-7,Basketball
-8,BasketballDunk
-9,BenchPress
-10,Biking
-11,Billiards
-12,BlowDryHair
-13,BlowingCandles
-14,BodyWeightSquats
-15,Bowling
-16,BoxingPunchingBag
-17,BoxingSpeedBag
-18,BreastStroke
-19,BrushingTeeth
-20,CleanAndJerk
-21,CliffDiving
-22,CricketBowling
-23,CricketShot
-24,CuttingInKitchen
-25,Diving
-26,Drumming
-27,Fencing
-28,FieldHockeyPenalty
-29,FloorGymnastics
-30,FrisbeeCatch
-31,FrontCrawl
-32,GolfSwing
-33,Haircut
-34,Hammering
-35,HammerThrow
-36,HandstandPushups
-37,HandstandWalking
-38,HeadMassage
-39,HighJump
-40,HorseRace
-41,HorseRiding
-42,HulaHoop
-43,IceDancing
-44,JavelinThrow
-45,JugglingBalls
-46,JumpingJack
-47,JumpRope
-48,Kayaking
-49,Knitting
-50,LongJump
-51,Lunges
-52,MilitaryParade
-53,Mixing
-54,MoppingFloor
-55,Nunchucks
-56,ParallelBars
-57,PizzaTossing
-58,PlayingCello
-59,PlayingDaf
-60,PlayingDhol
-61,PlayingFlute
-62,PlayingGuitar
-63,PlayingPiano
-64,PlayingSitar
-65,PlayingTabla
-66,PlayingViolin
-67,PoleVault
-68,PommelHorse
-69,PullUps
-70,Punch
-71,PushUps
-72,Rafting
-73,RockClimbingIndoor
-74,RopeClimbing
-75,Rowing
-76,SalsaSpin
-77,ShavingBeard
-78,Shotput
-79,SkateBoarding
-80,Skiing
-81,Skijet
-82,SkyDiving
-83,SoccerJuggling
-84,SoccerPenalty
-85,StillRings
-86,SumoWrestling
-87,Surfing
-88,Swing
-89,TableTennisShot
-90,TaiChi
-91,TennisSwing
-92,ThrowDiscus
-93,TrampolineJumping
-94,Typing
-95,UnevenBars
-96,VolleyballSpiking
-97,WalkingWithDog
-98,WallPushups
-99,WritingOnBoard
-100,YoYo
+id;name;cap
+0;ApplyEyeMakeup;Demonstrating the process of applying eye makeup with a variety of tools and techniques, including eyeshadow, eyeliner, and mascara.
+1;ApplyLipstick;Demonstrating the process of applying lipstick, including selecting the right shade, using lip liner, and applying the lipstick evenly for a flawless finish.
+2;Archery;Showing the skill and precision required for archery, with an emphasis on the technique of pulling the bowstring and releasing the arrow.
+3;BabyCrawling;Capturing the adorable sight of babies crawling, with a focus on their first attempts to move and explore the world around them.
+4;BalanceBeam;Displaying the athleticism and grace required for balance beam gymnastics, including jumps, turns, and acrobatic elements on a narrow beam.
+5;BandMarching;Featuring the precision and synchronization of a marching band as they perform complex routines with musical instruments and choreography.
+6;BaseballPitch;Highlighting the skill and power of a baseball pitcher, with a focus on different types of pitches and techniques for throwing accurately and with speed.
+7;Basketball;Showcasing the excitement and athleticism of basketball, with dribbling, passing, shooting, and defense on a court with a team or individually.
+8;BasketballDunk;Featuring the spectacle of a basketball player jumping and slamming the ball through the hoop with force and style, commonly known as a dunk.
+9;BenchPress;Demonstrating the strength and technique required for a bench press, with a focus on proper form and breathing during the lift.
+10;Biking;Showing the adventure and freedom of biking, with scenic routes and challenges such as mountain biking, road biking, and BMX tricks.
+11;Billiards;Featuring the precision and strategy of billiards, with a focus on different types of shots, angles, and ball spins in games like 8-ball and 9-ball.
+12;BlowDryHair;Demonstrating the process of blow drying hair, including tips for different hair types and styles, and techniques for adding volume and shine.
+13;BlowingCandles;Capturing the joyful moment of blowing out birthday candles, with emphasis on creative cake designs and celebratory traditions around the world.
+14;BodyWeightSquats;Highlighting the benefits of bodyweight squats for building lower body strength and endurance, with tips for proper form and variations of the exercise.
+15;Bowling;Featuring the fun and competitive game of bowling, with a focus on aiming, ball speed, and spin for consistent strikes and spares.
+16;BoxingPunchingBag;Demonstrating the intensity and technique of boxing on a punching bag, with a focus on proper form, footwork, and combinations for a full body workout.
+17;BoxingSpeedBag;Highlighting the agility and speed required for boxing on a speed bag, with a focus on rhythm, timing, and coordination of punches for a challenging cardio workout.
+18;BreastStroke;Showing the smooth and efficient technique of breaststroke swimming, with a focus on the proper arm and leg movements, and breathing for a comfortable and efficient swim.
+19;BrushingTeeth;Educating viewers on the importance of brushing teeth for oral hygiene and overall health, with tips for proper brushing technique and dental care.
+20;CleanAndJerk;Highlighting the strength and explosiveness required for the clean and jerk weightlifting exercise, with a focus on proper form and progressions for building muscle and power.
+21;CliffDiving;Jumping off a cliff or platform into a body of water from a great height, showcasing the thrill and adrenaline rush of the sport.
+22;CricketBowling;Demonstrating the skill and technique required for cricket bowling, with a focus on different types of deliveries and strategies for getting the batsman out.
+23;CricketShot;Showing the power and precision of a cricket shot, with a focus on different types of shots such as the drive, pull, and cut, and the placement of the ball for maximum runs.
+24;CuttingInKitchen;Demonstrating the art of cutting and chopping ingredients in the kitchen, with a focus on different types of knives and techniques for safe and efficient preparation of food.
+25;Diving;Displaying the grace and athleticism of diving, with a focus on different types of dives, techniques for entering the water, and synchronization in synchronized diving.
+26;Drumming;Showing the rhythm and energy of drumming, with a focus on different styles and techniques of playing, and the role of drumming in different types of music.
+27;Fencing;Highlighting the speed and precision of fencing, with a focus on different types of attacks and defenses, and the scoring system for competitive matches.
+28;FieldHockeyPenalty;Featuring the excitement and tension of a penalty shot in field hockey, with a focus on different types of shots and techniques for scoring under pressure.
+29;FloorGymnastics;Displaying the artistry and athleticism of floor gymnastics, with a focus on tumbling passes, jumps, and dance elements, and the execution of routines with precision and style.
+30;FrisbeeCatch;Showing the fun and versatility of Frisbee, with a focus on different types of throws and catches, and the competitive sport of Ultimate Frisbee.
+31;FrontCrawl;Demonstrating the speed and efficiency of front crawl swimming, with a focus on proper technique for arm and leg movements, and breathing for maximum performance.
+32;GolfSwing;Showing the technique and precision of a golf swing, with a focus on different types of clubs and shots, and strategies for playing different types of holes and courses.
+33;Haircut;Demonstrating the skill and artistry of hair cutting, with a focus on different types of haircuts and techniques for styling and grooming hair.
+34;Hammering;Showing the strength and accuracy required for hammering, with a focus on different types of hammers and techniques for driving nails and shaping metal.
+35;HammerThrow;Highlighting the power and technique of hammer throwing, with a focus on the wind-up, release, and trajectory of the hammer for maximum distance.
+36;HandstandPushups;Demonstrating the strength and balance required for handstand pushups, with a focus on proper form and progressions for building upper body strength and stability.
+37;HandstandWalking;Showing the agility and control required for handstand walking, with a focus on proper technique and progressions for building balance and coordination.
+38;HeadMassage;Demonstrating the relaxation and stress relief benefits of a head massage, with a focus on different techniques and pressure points for tension release and scalp health.
+39;HighJump;Highlighting the athleticism and technique required for high jump, with a focus on the approach, take-off, and clearance over the bar for maximum height.
+40;HorseRace;Featuring the excitement and adrenaline rush of horse racing, with a focus on different types of races and techniques for riding and training horses.
+41;HorseRiding;Experience the joy and control of horse riding, with a focus on different riding styles, techniques, and competitions.
+42;HulaHoop;Featuring the fun and fitness benefits of hula hoop, with a focus on different types of tricks, routines, and games for all ages.
+43;IceDancing;Displaying the beauty and grace of ice dancing, with a focus on partner work, footwork, and lifts performed on ice.
+44;JavelinThrow;Highlighting the strength and technique required for javelin throwing, with a focus on the run-up, release, and trajectory of the javelin for maximum distance.
+45;JugglingBalls;Demonstrating the skill and coordination required for juggling balls, with a focus on different types of throws and catches, and progressions for mastering the art of juggling.
+46;JumpingJack;Showing the simplicity and effectiveness of jumping jacks as a full body workout, with a focus on proper form, variations, and benefits for cardiovascular health.
+47;JumpRope;Demonstrating the fun and fitness benefits of jumping rope, with a focus on different types of jumps, routines, and challenges for improving coordination and endurance.
+48;Kayaking;Highlighting the adventure and skill of kayaking, with a focus on different types of kayaks, techniques for paddling, and exploring rivers, lakes, and oceans.
+49;Knitting;Demonstrating the art and creativity of knitting, with a focus on different types of stitches, patterns, and techniques for making clothing, accessories, and home decor.
+50;LongJump;Showcasing the speed and power required for long jump, with a focus on the approach, take-off, and landing for maximum distance.
+51;Lunges;Demonstrating the technique and benefits of lunges for building lower body strength and stability, with a focus on proper form, variations, and progressions.
+52;MilitaryParade;Featuring the discipline and precision of military parade, with a focus on different types of formations, drills, and ceremonies performed by military personnel.
+53;Mixing;Demonstrating the art and science of mixing music, with a focus on different types of equipment, techniques, and styles for creating seamless transitions and dynamic playlists.
+54;MoppingFloor;Demonstrating the proper technique and tools for mopping floors, with a focus on different types of floors and cleaning solutions for a clean and safe environment.
+55;Nunchucks;Displaying the skill and agility required for nunchucks, with a focus on different types of strikes, combinations, and techniques for martial arts and entertainment.
+56;ParallelBars;Highlighting the strength and control required for parallel bars gymnastics, with a focus on different types of swings, handstands, and transitional elements.
+57;PizzaTossing;Featuring the art and fun of pizza tossing, with a focus on different types of throws, spins, and tricks for creating the perfect pizza crust.
+58;PlayingCello;Demonstrating the beauty and versatility of the cello, with a focus on different types of music, techniques, and performance styles for this classical instrument.
+59;PlayingDaf;Showcasing the rhythm and energy of playing the Daf, with a focus on different types of beats, techniques, and styles for this traditional Persian instrument.
+60;PlayingDhol;Highlighting the excitement and power of playing the Dhol, with a focus on different types of rhythms, techniques, and styles for this Punjabi drum.
+61;PlayingFlute;Demonstrating the beauty and versatility of the flute, with a focus on different types of music, techniques, and performance styles for this classical instrument.
+62;PlayingGuitar;Showing the creativity and expression of playing the guitar, with a focus on different types of music, chords, and techniques for acoustic and electric guitar.
+63;PlayingPiano;Highlighting the elegance and complexity of playing the piano, with a focus on different types of music, keys, and techniques for this classical instrument.
+64;PlayingSitar;Featuring the intricate and mesmerizing sounds of the Sitar, with a focus on different types of ragas, techniques, and performance styles for this traditional Indian instrument.
+65;PlayingTabla;Showing the rhythm and energy of playing the Tabla, with a focus on different types of beats, techniques, and styles for this traditional Indian percussion instrument.
+66;PlayingViolin;Demonstrating the passion and emotion of playing the violin, with a focus on different types of music, techniques, and performance styles for this classical instrument.
+67;PoleVault;Highlighting the speed, strength, and technique required for pole vaulting, with a focus on the approach, take-off, and clearance over the bar for maximum height.
+68;PommelHorse;Displaying the strength and agility required for pommel horse gymnastics, with a focus on different types of circles, flairs, and handstands on this challenging apparatus.
+69;PullUps;Demonstrating the strength and endurance required for pull-ups, with a focus on proper form, variations, and progressions for building upper body strength and stability.
+70;Punch;Highlighting the power and technique of punching, with a focus on different types of punches, combinations, and training drills for martial arts and self-defense.
+71;PushUps;Demonstrating the versatility and effectiveness of push-ups as a full body workout, with a focus on proper form, variations, and benefits for strengthening the chest, arms, and core.
+72;Rafting;Featuring the excitement and adventure of rafting, with a focus on different types of rapids, techniques for paddling, and exploring rivers and canyons.
+73;RockClimbingIndoor;Showing the skill and determination required for indoor rock climbing, with a focus on different types of holds, techniques for climbing, and training exercises for building strength and endurance.
+74;RopeClimbing;Highlighting the strength and endurance required for rope climbing, with a focus on proper technique, variations, and progressions for building upper body strength and stability.
+75;Rowing;Demonstrating the teamwork and endurance required for rowing, with a focus on different types of boats, techniques for rowing, and racing strategies for competitive rowing.
+76;SalsaSpin;Featuring the rhythm and passion of salsa dancing, with a focus on different types of spins, techniques, and partner work for this popular Latin dance style.
+77;ShavingBeard;Demonstrating the proper technique and tools for shaving the beard, with a focus on different types of razors, shaving creams, and techniques for a clean and smooth shave.
+78;Shotput;Highlighting the power and technique required for shot put, with a focus on the approach, release, and trajectory of the shot for maximum distance.
+79;SkateBoarding;Showing the creativity and adrenaline rush of skateboarding, with a focus on different types of tricks, styles, and competitions for this action sport.
+80;Skiing;Featuring the excitement and skill of skiing, with a focus on different types of slopes, techniques for turning, and racing strategies for competitive skiing.
+81;Skijet;Highlighting the speed and thrill of Skijet, with a focus on different types of maneuvers, techniques for turning, and safety considerations for this water sport.
+82;SkyDiving;Featuring the adrenaline rush and freedom of skydiving, with a focus on different types of jumps, techniques for landing, and safety procedures for this extreme sport.
+83;SoccerJuggling;Demonstrating the skill and control required for soccer juggling, with a focus on different types of kicks, tricks, and progressions for mastering this popular sport.
+84;SoccerPenalty;Featuring the tension and excitement of a penalty kick in soccer, with a focus on different types of shots and techniques for scoring under pressure.
+85;StillRings;Displaying the strength and control required for still rings gymnastics, with a focus on different types of swings, strength holds, and transitional elements on this challenging apparatus.
+86;SumoWrestling;Highlighting the power and technique of sumo wrestling, with a focus on different types of throws, grips, and strategies for this traditional Japanese sport.
+87;Surfing;Featuring the beauty and skill of surfing, with a focus on different types of waves, techniques for riding, and safety considerations for this water sport.
+88;Swing;Showing the joy and freedom of swinging, with a focus on different types of swings, techniques for gaining height, and safety considerations for playground equipment.
+89;TableTennisShot;Demonstrating the speed and precision of table tennis shots, with a focus on different types of spins, serves, and techniques for competitive play.
+90;TaiChi;Highlighting the relaxation and health benefits of Tai Chi, with a focus on different types of movements, breathing techniques, and meditation for promoting balance and harmony.
+91;TennisSwing;Showing the technique and precision of a tennis swing, with a focus on different types of shots, strategies for playing different opponents, and styles of play.
+92;ThrowDiscus;Highlighting the strength and technique required for discus throwing, with a focus on the wind-up, release, and trajectory of the discus for maximum distance.
+93;TrampolineJumping;Demonstrating the fun and fitness benefits of trampoline jumping, with a focus on different types of jumps, tricks, and safety considerations for this activity.
+94;Typing;Highlighting the importance and efficiency of typing, with a focus on different types of keyboards, techniques for typing, and training exercises for improving typing speed and accuracy.
+95;UnevenBars;Displaying the grace and athleticism required for uneven bars gymnastics, with a focus on different types of swings, releases, and transitional elements on this challenging apparatus.
+96;VolleyballSpiking;Demonstrating the power and precision of volleyball spiking, with a focus on different types of shots, techniques for jumping, and strategies for scoring.
+97;WalkingWithDog;Showing the joy and benefits of walking with a dog, with a focus on different types of dogs, techniques for walking, and safety considerations for both the dog and the owner.
+98;WallPushups;Demonstrating the versatility and convenience of wall push-ups as a full body workout, with a focus on proper form, variations, and benefits for building upper body strength and stability.
+99;WritingOnBoard;Highlighting the communication and teaching benefits of writing on a board, with a focus on different types of boards, techniques for writing, and training exercises for improving handwriting and presentation skills.
+100;YoYo;Featuring the creativity and fun of YoYo, with a focus on different types of tricks, techniques for string control, and styles of play for this classic toy.

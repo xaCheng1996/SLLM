@@ -1,25 +1,29 @@
 resume:
+test:
 pretrain:
-seed: 1024
+seed: 3407
 data:
     dataset: k400
     modality: RGB
     num_segments: 8
+    num_feature: 4
     seg_length: 1
-    batch_size: 32
-    workers: 4
+    batch_size: 64
+    workers: 10
     num_classes: 400
     image_tmpl: 'img_{:05d}.jpg'
-    train_root: '/bpfs/v2_mnt/VIS/test/k400/train_320_frames'
-    train_list: 'lists/k400/kinetics_rgb_train_se320.txt'
-    val_root: /bpfs/v2_mnt/VIS/test/k400/kinetics_400_val_320_opencv
-    val_list: lists/k400/kinetics_rgb_val_se320.txt
+    train_root:
+    train_list: 'lists/k400/train.txt'
+    val_root:
+    val_list: 'lists/k400/val.txt'
     label_list: 'lists/kinetics_400_labels.csv'
     input_size: 224
+    num_restoration: 1
     randaug:
         N: 2 #2
         M: 9  #9
     random_shift: True
+    exp_name: Text2Vis_4_8_shifter_test
 network:
     arch: ViT-B/32  #ViT-B/32 ViT-B/16
     init: True
@@ -27,11 +31,16 @@ network:
     drop_out: 0.0 
     emb_dropout: 0.0 
     type: clip_k400
+    Project: Text2Vis
     sim_header: Transf  # Transf   None  
     joint_st: False
-    drop: 0      
-    fix_text: True  
-    fix_video: False        
+    drop: 0
+    fix_text: True
+    fix_video: False
+    text_moda: 'normal' #enhance
+    shifter: False
+    test: True
+    use_restoration: True
 solver:
     type: cosine
     epochs: 30
@@ -42,7 +51,7 @@ solver:
     lr_warmup_step: 5
     weight_decay: 0.2
     loss_type: CE
-    evaluate: False
+    evaluate: True
     clip_ratio: 0.1
     grad_accumulation_steps: 1
 logging:

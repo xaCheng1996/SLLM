@@ -1,401 +1,401 @@
-id,name
-0,abseiling
-1,air drumming
-2,answering questions
-3,applauding
-4,applying cream
-5,archery
-6,arm wrestling
-7,arranging flowers
-8,assembling computer
-9,auctioning
-10,baby waking up
-11,baking cookies
-12,balloon blowing
-13,bandaging
-14,barbequing
-15,bartending
-16,beatboxing
-17,bee keeping
-18,belly dancing
-19,bench pressing
-20,bending back
-21,bending metal
-22,biking through snow
-23,blasting sand
-24,blowing glass
-25,blowing leaves
-26,blowing nose
-27,blowing out candles
-28,bobsledding
-29,bookbinding
-30,bouncing on trampoline
-31,bowling
-32,braiding hair
-33,breading or breadcrumbing
-34,breakdancing
-35,brush painting
-36,brushing hair
-37,brushing teeth
-38,building cabinet
-39,building shed
-40,bungee jumping
-41,busking
-42,canoeing or kayaking
-43,capoeira
-44,carrying baby
-45,cartwheeling
-46,carving pumpkin
-47,catching fish
-48,catching or throwing baseball
-49,catching or throwing frisbee
-50,catching or throwing softball
-51,celebrating
-52,changing oil
-53,changing wheel
-54,checking tires
-55,cheerleading
-56,chopping wood
-57,clapping
-58,clay pottery making
-59,clean and jerk
-60,cleaning floor
-61,cleaning gutters
-62,cleaning pool
-63,cleaning shoes
-64,cleaning toilet
-65,cleaning windows
-66,climbing a rope
-67,climbing ladder
-68,climbing tree
-69,contact juggling
-70,cooking chicken
-71,cooking egg
-72,cooking on campfire
-73,cooking sausages
-74,counting money
-75,country line dancing
-76,cracking neck
-77,crawling baby
-78,crossing river
-79,crying
-80,curling hair
-81,cutting nails
-82,cutting pineapple
-83,cutting watermelon
-84,dancing ballet
-85,dancing charleston
-86,dancing gangnam style
-87,dancing macarena
-88,deadlifting
-89,decorating the christmas tree
-90,digging
-91,dining
-92,disc golfing
-93,diving cliff
-94,dodgeball
-95,doing aerobics
-96,doing laundry
-97,doing nails
-98,drawing
-99,dribbling basketball
-100,drinking
-101,drinking beer
-102,drinking shots
-103,driving car
-104,driving tractor
-105,drop kicking
-106,drumming fingers
-107,dunking basketball
-108,dying hair
-109,eating burger
-110,eating cake
-111,eating carrots
-112,eating chips
-113,eating doughnuts
-114,eating hotdog
-115,eating ice cream
-116,eating spaghetti
-117,eating watermelon
-118,egg hunting
-119,exercising arm
-120,exercising with an exercise ball
-121,extinguishing fire
-122,faceplanting
-123,feeding birds
-124,feeding fish
-125,feeding goats
-126,filling eyebrows
-127,finger snapping
-128,fixing hair
-129,flipping pancake
-130,flying kite
-131,folding clothes
-132,folding napkins
-133,folding paper
-134,front raises
-135,frying vegetables
-136,garbage collecting
-137,gargling
-138,getting a haircut
-139,getting a tattoo
-140,giving or receiving award
-141,golf chipping
-142,golf driving
-143,golf putting
-144,grinding meat
-145,grooming dog
-146,grooming horse
-147,gymnastics tumbling
-148,hammer throw
-149,headbanging
-150,headbutting
-151,high jump
-152,high kick
-153,hitting baseball
-154,hockey stop
-155,holding snake
-156,hopscotch
-157,hoverboarding
-158,hugging
-159,hula hooping
-160,hurdling
-161,hurling (sport)
-162,ice climbing
-163,ice fishing
-164,ice skating
-165,ironing
-166,javelin throw
-167,jetskiing
-168,jogging
-169,juggling balls
-170,juggling fire
-171,juggling soccer ball
-172,jumping into pool
-173,jumpstyle dancing
-174,kicking field goal
-175,kicking soccer ball
-176,kissing
-177,kitesurfing
-178,knitting
-179,krumping
-180,laughing
-181,laying bricks
-182,long jump
-183,lunge
-184,making a cake
-185,making a sandwich
-186,making bed
-187,making jewelry
-188,making pizza
-189,making snowman
-190,making sushi
-191,making tea
-192,marching
-193,massaging back
-194,massaging feet
-195,massaging legs
-196,massaging person's head
-197,milking cow
-198,mopping floor
-199,motorcycling
-200,moving furniture
-201,mowing lawn
-202,news anchoring
-203,opening bottle
-204,opening present
-205,paragliding
-206,parasailing
-207,parkour
-208,passing American football (in game)
-209,passing American football (not in game)
-210,peeling apples
-211,peeling potatoes
-212,petting animal (not cat)
-213,petting cat
-214,picking fruit
-215,planting trees
-216,plastering
-217,playing accordion
-218,playing badminton
-219,playing bagpipes
-220,playing basketball
-221,playing bass guitar
-222,playing cards
-223,playing cello
-224,playing chess
-225,playing clarinet
-226,playing controller
-227,playing cricket
-228,playing cymbals
-229,playing didgeridoo
-230,playing drums
-231,playing flute
-232,playing guitar
-233,playing harmonica
-234,playing harp
-235,playing ice hockey
-236,playing keyboard
-237,playing kickball
-238,playing monopoly
-239,playing organ
-240,playing paintball
-241,playing piano
-242,playing poker
-243,playing recorder
-244,playing saxophone
-245,playing squash or racquetball
-246,playing tennis
-247,playing trombone
-248,playing trumpet
-249,playing ukulele
-250,playing violin
-251,playing volleyball
-252,playing xylophone
-253,pole vault
-254,presenting weather forecast
-255,pull ups
-256,pumping fist
-257,pumping gas
-258,punching bag
-259,punching person (boxing)
-260,push up
-261,pushing car
-262,pushing cart
-263,pushing wheelchair
-264,reading book
-265,reading newspaper
-266,recording music
-267,riding a bike
-268,riding camel
-269,riding elephant
-270,riding mechanical bull
-271,riding mountain bike
-272,riding mule
-273,riding or walking with horse
-274,riding scooter
-275,riding unicycle
-276,ripping paper
-277,robot dancing
-278,rock climbing
-279,rock scissors paper
-280,roller skating
-281,running on treadmill
-282,sailing
-283,salsa dancing
-284,sanding floor
-285,scrambling eggs
-286,scuba diving
-287,setting table
-288,shaking hands
-289,shaking head
-290,sharpening knives
-291,sharpening pencil
-292,shaving head
-293,shaving legs
-294,shearing sheep
-295,shining shoes
-296,shooting basketball
-297,shooting goal (soccer)
-298,shot put
-299,shoveling snow
-300,shredding paper
-301,shuffling cards
-302,side kick
-303,sign language interpreting
-304,singing
-305,situp
-306,skateboarding
-307,ski jumping
-308,skiing (not slalom or crosscountry)
-309,skiing crosscountry
-310,skiing slalom
-311,skipping rope
-312,skydiving
-313,slacklining
-314,slapping
-315,sled dog racing
-316,smoking
-317,smoking hookah
-318,snatch weight lifting
-319,sneezing
-320,sniffing
-321,snorkeling
-322,snowboarding
-323,snowkiting
-324,snowmobiling
-325,somersaulting
-326,spinning poi
-327,spray painting
-328,spraying
-329,springboard diving
-330,squat
-331,sticking tongue out
-332,stomping grapes
-333,stretching arm
-334,stretching leg
-335,strumming guitar
-336,surfing crowd
-337,surfing water
-338,sweeping floor
-339,swimming backstroke
-340,swimming breast stroke
-341,swimming butterfly stroke
-342,swing dancing
-343,swinging legs
-344,swinging on something
-345,sword fighting
-346,tai chi
-347,taking a shower
-348,tango dancing
-349,tap dancing
-350,tapping guitar
-351,tapping pen
-352,tasting beer
-353,tasting food
-354,testifying
-355,texting
-356,throwing axe
-357,throwing ball
-358,throwing discus
-359,tickling
-360,tobogganing
-361,tossing coin
-362,tossing salad
-363,training dog
-364,trapezing
-365,trimming or shaving beard
-366,trimming trees
-367,triple jump
-368,tying bow tie
-369,tying knot (not on a tie)
-370,tying tie
-371,unboxing
-372,unloading truck
-373,using computer
-374,using remote controller (not gaming)
-375,using segway
-376,vault
-377,waiting in line
-378,walking the dog
-379,washing dishes
-380,washing feet
-381,washing hair
-382,washing hands
-383,water skiing
-384,water sliding
-385,watering plants
-386,waxing back
-387,waxing chest
-388,waxing eyebrows
-389,waxing legs
-390,weaving basket
-391,welding
-392,whistling
-393,windsurfing
-394,wrapping present
-395,wrestling
-396,writing
-397,yawning
-398,yoga
-399,zumba
+id;name;concept
+0;abseiling;Descending a steep rock face or other terrain by using a rope attached to the body.
+1;air drumming;Pretending to play a drum kit without using actual drums, typically by miming drumming movements in the air with hands and feet.
+2;answering questions;Providing a response or reply to a query, request or other form of inquiry.
+3;applauding;Showing approval or appreciation of someone or something by clapping hands together repeatedly.
+4;applying cream;Putting lotion or other substance onto the skin, typically to moisturize, soothe or treat a skin condition.
+5;archery;Shooting arrows with a bow at a target or other intended destination.
+6;arm wrestling;Competitive sport or activity in which two people try to force each other's arm down onto a table while holding hands.
+7;arranging flowers;Creating a decorative display of flowers or plants, typically for a special occasion or event.
+8;assembling computer;Putting together the individual parts and components of a computer system to make a functional machine.
+9;auctioning;Conducting a public sale in which goods or property are sold to the highest bidder.
+10;baby waking up;Rousing from sleep or a state of rest, typically in the case of an infant or young child.
+11;baking cookies;Preparing and cooking small, flat sweet treats made from dough that typically contains sugar, flour, butter, and eggs.
+12;balloon blowing;Inflating a rubber or plastic balloon with air, typically to create a toy or decoration.
+13;bandaging;Covering a wound or injury with a bandage or other protective material to prevent further damage or promote healing.
+14;barbequing;Cooking food over an open flame or hot coals, typically outdoors on a grill or barbecue.
+15;bartending;Mixing and serving drinks at a bar or other establishment that serves alcoholic beverages.
+16;beatboxing;Producing rhythm, percussion and other sounds using only one's mouth, lips, tongue, and voice, typically in a rhythmic and melodic fashion.
+17;bee keeping;Maintaining and caring for bees, typically in an apiary or other designated area, for the purpose of producing honey and other bee-related products.
+18;belly dancing;Dancing style originating from the Middle East and North Africa, characterized by fluid, undulating movements of the torso and hips.
+19;bench pressing;Weightlifting exercise performed while lying on one's back on a bench and lifting a barbell or other weight up and down using the arms and chest muscles.
+20;bending back;Moving the upper body backwards, typically in a stretch or as part of an exercise or physical activity.
+21;bending metal;using tools and equipment to reshape and manipulate metal
+22;biking through snow;riding a bicycle on a snowy terrain
+23;blasting sand;using a high-pressure stream of sand to clean or shape a surface
+24;blowing glass;using a blowpipe to shape molten glass into various objects
+25;blowing leaves;using a blower to move leaves and debris from one area to another
+26;blowing nose;clearing the nasal passages of mucus by exhaling forcefully through the nose
+27;blowing out candles;extinguishing the flame of candles by blowing air over it
+28;bobsledding;racing down an icy track on a sled with two or four runners
+29;bookbinding;the process of physically assembling a book from an ordered stack of paper sheets
+30;bouncing on trampoline;jumping up and down on a trampoline for fun or exercise
+31;bowling;rolling a heavy ball down a narrow lane to knock down pins at the end of the lane
+32;braiding hair;weaving three or more strands of hair together in a pattern
+33;breading or breadcrumbing;coating food with bread crumbs before cooking it
+34;breakdancing;a style of acrobatic and athletic street dance typically performed to hip-hop music
+35;brush painting;applying paint to a surface using a brush
+36;brushing hair;using a brush or comb to groom and detangle hair
+37;brushing teeth;cleaning teeth using a toothbrush and toothpaste to remove plaque and debris
+38;building cabinet;constructing a piece of furniture with shelves, drawers, or compartments for storage
+39;building shed;erecting a small, simple structure for storage or shelter
+40;bungee jumping;leaping from a high place while attached to a long elastic cord for a thrilling free fall experience
+41;busking;performing music or other entertainment in a public place for voluntary donations from passersby
+42;canoeing or kayaking;traversing a body of water using a canoe or kayak
+43;capoeira;a Brazilian martial art that combines elements of dance, acrobatics, and music
+44;carrying baby;holding a baby securely in one's arms or using a baby carrier for transport
+45;cartwheeling;performing a sideways tumbling movement with the body fully extended, hands and feet touching the ground alternately
+46;carving pumpkin;cutting and shaping a pumpkin into a decorative object, often for Halloween
+47;catching fish;retrieving a fish from the water using a fishing rod, reel, and bait
+48;catching or throwing baseball;participating in a team sport where players catch and throw a ball to make plays and score runs
+49;catching or throwing frisbee;tossing and catching a flying disc
+50;catching or throwing softball;participating in a team sport where players catch and throw a ball to make plays and score runs
+51;celebrating;commemorating a significant event or achievement with festivities or other expressions of joy
+52;changing oil;replacing the engine oil in a vehicle to maintain proper lubrication
+53;changing wheel;removing and replacing a wheel on a vehicle, often for maintenance or repair
+54;checking tires;inspecting tires for proper inflation, wear, and damage
+55;cheerleading;performing acrobatics, dance, and stunts to support a sports team or organization
+56;chopping wood;using an axe or other tool to split logs into smaller pieces
+57;clapping;making a rhythmic sound by striking one's hands together repeatedly
+58;clay pottery making;creating pottery by shaping and firing clay
+59;clean and jerk;an Olympic weightlifting exercise where the weight is lifted from the ground to a standing position, then jerked overhead in one motion
+60;cleaning floor;removing dirt and debris from a floor surface using a broom, vacuum, or mop
+61;cleaning gutters;removing leaves, debris, and other blockages from roof gutters to prevent water damage
+62;cleaning pool;removing debris, testing chemical levels, and maintaining equipment to keep a swimming pool clean and safe for use
+63;cleaning shoes;removing dirt and stains from shoes using a brush, cloth, or cleaning solution
+64;cleaning toilet;sanitizing and removing waste from a toilet bowl and surrounding area
+65;cleaning windows;removing dirt and grime from windows and other glass surfaces using a squeegee, cloth, or cleaning solution
+66;climbing a rope;ascending or descending a rope using only one's own body strength
+67;climbing ladder;ascending or descending a ladder to access a high point or perform maintenance
+68;climbing tree;scaling a tree trunk using one's hands and feet to reach a high point or for recreation
+69;contact juggling;manipulating one or more balls or objects over the body without letting them drop or bounce away
+70;cooking chicken;preparing chicken for consumption using various methods such as roasting, grilling, or frying.
+71;cooking egg;preparing an egg for consumption by boiling, frying, or scrambling it
+72;cooking on campfire;preparing food by cooking it over an open fire in an outdoor setting
+73;cooking sausages;preparing sausages for consumption by grilling, frying, or boiling them
+74;counting money;calculating the total value of a collection of currency
+75;country line dancing;a form of dance in which a group of people perform choreographed steps in unison, often to country music
+76;cracking neck;adjusting one's neck by twisting it sharply to one side to relieve tension or discomfort
+77;crawling baby;the act of a young infant moving on their hands and knees, typically before learning to walk
+78;crossing river;moving from one side of a river to the other, often by wading or using a bridge or boat
+79;crying;shedding tears as a physical expression of emotion such as sadness, pain, or joy
+80;curling hair;styling hair by using heat, rollers, or other tools to create curls or waves
+81;cutting nails;trimming fingernails or toenails using a nail clipper or other cutting tool
+82;cutting pineapple;removing the outer skin and core of a pineapple, then slicing the fruit into pieces
+83;cutting watermelon;slicing a watermelon into pieces for consumption, often by removing the rind and cutting the fruit into wedges or cubes
+84;dancing ballet;a style of dance characterized by precise movements, elegant poses, and graceful turns
+85;dancing charleston;a lively dance that originated in the 1920s, characterized by fast footwork and swinging movements of the arms and legs
+86;dancing gangnam style;a Korean pop song and dance that gained worldwide popularity in 2012, featuring distinctive horse-riding dance moves
+87;dancing macarena;a Spanish dance song and accompanying dance that involves a series of coordinated arm movements and claps
+88;deadlifting;lifting a barbell from the ground to a standing position by straightening the legs and back
+89;decorating the christmas tree;putting ornaments, lights, and other decorations on a Christmas tree
+90;digging;using a tool or one's hands to excavate dirt, sand, or other material from the ground
+91;dining;eating a meal, often in a social or formal setting
+92;disc golfing;playing a sport similar to traditional golf, but using specialized flying discs instead of golf balls and clubs
+93;diving cliff;jumping or diving off a high cliff or platform into a body of water
+94;dodgeball;a team sport in which players try to eliminate their opponents by hitting them with a ball and avoiding being hit themselves
+95;doing aerobics;performing a type of exercise that combines rhythmic movements with stretching and strength training
+96;doing laundry;washing, drying, and folding clothes or other fabrics using a washing machine and dryer
+97;doing nails;applying nail polish or other treatments to fingernails or toenails
+98;drawing;creating images using a pencil, pen, or other drawing tool on paper or another surface
+99;dribbling basketball;maneuvering a basketball by bouncing it on the court using one hand
+100;drinking;consuming a beverage, typically through the mouth
+101;drinking beer;consuming a carbonated alcoholic beverage made from malted barley, hops, yeast, and water
+102;drinking shots;consuming a small amount of strong alcoholic drink, typically served in a shot glass
+103;driving car;operating a motor vehicle to transport oneself or others to a destination
+104;driving tractor;operating a farm vehicle with large wheels or tracks designed for use on rough or uneven terrain
+105;drop kicking;kicking a ball by dropping it onto the ground and then kicking it as it bounces up
+106;drumming fingers;tapping one's fingers rhythmically on a surface, often as a sign of impatience or boredom
+107;dunking basketball;jumping high enough to slam a basketball through a hoop
+108;dying hair;changing the color of one's hair using hair dye or other coloring products
+109;eating burger;consuming a sandwich consisting of a grilled patty of ground beef or other meat, typically served on a bun with various toppings
+110;eating cake;consuming a sweet baked dessert typically made with flour, sugar, eggs, and butter or oil
+111;eating carrots;consuming a vegetable with a crunchy texture and a sweet, earthy flavor, typically orange in color
+112;eating chips;consuming a snack made from thin slices of potato or other root vegetables, often fried or baked and flavored with salt or other seasonings
+113;eating doughnuts;consuming a sweet fried pastry typically shaped like a ring or ball and often topped with glaze, icing, or other toppings
+114;eating hotdog;consuming a sausage served in a long bun, often with condiments such as ketchup, mustard, or relish
+115;eating ice cream;consuming a frozen dessert made from dairy products such as cream or milk, often flavored with fruit, chocolate, or other ingredients
+116;eating spaghetti;consuming a long, thin, cylindrical pasta typically served with a tomato-based sauce and often topped with grated cheese
+117;eating watermelon;consuming a large, juicy fruit with a green rind and red or pink flesh containing many small seeds
+118;egg hunting;searching for hidden eggs, often as part of an Easter tradition
+119;exercising arm;performing physical activities designed to strengthen or tone the muscles of the arms
+120;exercising with an exercise ball;performing physical activities using a large, inflatable ball to improve balance, flexibility, and strength
+121;extinguishing fire;using water, foam, or other substances to put out a fire and prevent it from spreading
+122;faceplanting;falling forward and landing face-first on the ground or another surface
+123;feeding birds;providing food for wild or domesticated birds to eat, often by scattering seeds or other food on the ground or in a feeder
+124;feeding fish;providing food for fish in an aquarium or pond, often by sprinkling fish food into the water
+125;feeding goats;providing food for domesticated goats, often by giving them hay, grain, or other vegetation to eat
+126;filling eyebrows;applying makeup or other products to enhance or reshape the appearance of one's eyebrows
+127;finger snapping;making a snapping sound by quickly pressing the thumb and middle finger together and then releasing them
+128;fixing hair;adjusting or styling one's hair using a comb, brush, or other tool
+129;flipping pancake;cooking a pancake by flipping it in the air using a spatula or other tool
+130;flying kite;Controlling a kite with a string or line, allowing it to fly high in the air and perform various maneuvers.
+131;folding clothes;Bending and arranging clothing in a neat and organized manner, typically for storage or transportation.
+132;folding napkins;Creating decorative or functional shapes from napkins, often used in restaurants or for special events.
+133;folding paper;Manipulating paper to create a desired shape or design, often used in art or crafts.
+134;front raises;An exercise where weights are lifted from a lowered position to a raised position in front of the body, used to strengthen the shoulders and arms.
+135;frying vegetables;Cooking vegetables in hot oil or fat until they are crispy and golden brown.
+136;garbage collecting;Gathering and disposing of waste materials in a designated area or bin.
+137;gargling;Rinsing the mouth and throat with a liquid, typically water, while exhaling to create a bubbling or gurgling sound.
+138;getting a haircut;Having one's hair cut and styled by a professional hairdresser or barber.
+139;getting a tattoo;Having a permanent design or image applied to the skin using ink or other pigments.
+140;giving or receiving award;Presenting or receiving recognition for achievement or excellence, often in the form of a trophy, medal, or certificate.
+141;golf chipping;Hitting a golf ball with a short, lofted club to make it fly a short distance onto the green and towards the hole.
+142;golf driving;Hitting a golf ball with a longer club to make it travel a long distance down the fairway.
+143;golf putting;Hitting a golf ball with a putter to make it roll along the ground towards the hole on the green.
+144;grinding meat;Reducing meat into small pieces or particles using a grinder or food processor, often used for making ground meat or sausage.
+145;grooming dog;Cleaning and maintaining the appearance of a dog's coat, including brushing, trimming, and washing.
+146;grooming horse;Cleaning and maintaining the appearance of a horse's coat, including brushing, trimming, and washing.
+147;gymnastics tumbling;Performing acrobatic movements such as flips, somersaults, and handsprings on a mat or padded surface.
+148;hammer throw;A track and field event where a heavy metal ball is thrown for distance using a spinning technique.
+149;headbanging;Moving the head and neck in time with music, often in a vigorous and forceful manner.
+150;headbutting;Striking an object or person with the head, often used as a form of attack or aggression.
+151;high jump;Jumping over a horizontal bar with the aid of a curved support.
+152;high kick;Kicking leg above head height.
+153;hitting baseball;Striking the ball with a bat.
+154;hockey stop;A sudden stop made by a hockey player by forcing the back of the blade of their stick down on the ice.
+155;holding snake;Gently holding or cradling a snake, usually with both hands.
+156;hopscotch;A children's game in which a player tosses a small object into numbered spaces of a pattern of rectangles marked on the ground and then hops through the spaces to retrieve the object.
+157;hoverboarding;Riding a motorized board that hovers above the ground.
+158;hugging;Embracing another person with arms.
+159;hula hooping;Rotating a large hoop around the waist, hips or other parts of the body.
+160;hurdling;Running and jumping over a series of obstacles called hurdles.
+161;hurling (sport);Playing a traditional Irish game similar to field hockey.
+162;ice climbing;Climbing up ice formations such as frozen waterfalls, cliffs or ice-covered rocks using specialized equipment such as crampons and ice axes.
+163;ice fishing;Fishing through a hole in the ice on a frozen body of water using specialized equipment such as an ice auger and an ice fishing rod and reel.
+164;ice skating;Gliding over ice wearing ice skates.
+165;ironing;Using a hot iron to remove wrinkles from fabric.
+166;javelin throw;Throwing a spear-like object called a javelin for distance in a track and field event.
+167;jetskiing;Riding a personal watercraft called a jet ski over water.
+168;jogging;Running at a slow or moderate pace for exercise or physical fitness.
+169;juggling balls;Throwing and catching multiple balls in succession.
+170;juggling fire;Performing juggling with objects that are on fire.
+171;juggling soccer ball;Kicking a soccer ball repeatedly with feet, legs, and other body parts without letting the ball touch the ground.
+172;jumping into pool;Jumping feet first into a swimming pool.
+173;jumpstyle dancing;A dance style that involves energetic jumping and shuffling movements.
+174;kicking field goal;Scoring points in American football by kicking a ball through a set of goalposts.
+175;kicking soccer ball;Striking a ball with the feet in a game of soccer.
+176;kissing;Touching lips with another person as a sign of affection or greeting.
+177;kitesurfing;Riding on a board while holding onto a large kite that provides propulsion over water.
+178;knitting;Creating fabric by interlocking loops of yarn using knitting needles or a knitting machine.
+179;krumping;A highly energetic and expressive dance style characterized by free-flowing, exaggerated movements.
+180;laughing;Expressing amusement or joy by making sounds with the voice.
+181;laying bricks;Arranging rectangular building blocks one on top of the other using mortar or cement to create a sturdy structure, usually for constructing a wall or other architectural features.
+182;long jump;A track and field event where athletes sprint down a runway and jump as far as possible into a sandpit.
+183;lunge;A lower body exercise that involves stepping forward with one leg and bending the knee while keeping the other leg straight, then pushing back up to a standing position and repeating with the other leg.
+184;making a cake;Combining ingredients such as flour, sugar, and eggs to create a baked dessert typically consisting of layers or a single large cake.
+185;making a sandwich;Assembling slices of bread with various fillings such as meat, cheese, vegetables, and condiments to create a handheld meal.
+186;making bed;Straightening out and arranging sheets, blankets, and pillows on a bed to create a neat and comfortable sleeping surface.
+187;making jewelry;Designing and crafting accessories such as necklaces, bracelets, and earrings using materials such as beads, wire, and metal.
+188;making pizza;Preparing a dish made of dough, tomato sauce, cheese, and various toppings such as vegetables, meat, and spices, typically baked in an oven.
+189;making snowman;Rolling balls of snow and stacking them on top of each other to create a figure resembling a human with a carrot for a nose, sticks for arms, and stones or coal for eyes and mouth.
+190;making sushi;Preparing bite-sized pieces of Japanese cuisine consisting of cooked vinegared rice combined with other ingredients such as seafood, vegetables, and egg, wrapped in seaweed or served on top of rice.
+191;making tea;Boiling water and steeping tea leaves to create a hot beverage typically served with milk, sugar, or honey.
+192;marching;Walking in a regular, rhythmic manner, often to music, as part of a formal procession, military exercise, or protest demonstration.
+193;massaging back;Applying pressure and kneading muscles in the back to relieve tension and promote relaxation and healing.
+194;massaging feet;Rubbing and manipulating muscles and joints in the feet to promote relaxation, reduce pain, and improve circulation.
+195;massaging legs;Applying pressure and kneading muscles in the legs to relieve tension and promote relaxation and healing.
+196;massaging person's head;Rubbing and manipulating the scalp and neck to relieve tension and promote relaxation and healing.
+197;milking cow;Extracting milk from the udder of a cow using a milking machine or by hand for consumption or processing into dairy products.
+198;mopping floor;Cleaning and removing dirt and debris from floors using a mop or similar tool and a cleaning solution.
+199;motorcycling;Riding a motorized vehicle with two wheels powered by an internal combustion engine or electric motor.
+200;moving furniture;Transporting and arranging items such as chairs, tables, and beds from one location to another within a space or to a new location.
+201;mowing lawn;Cutting grass on a lawn or garden using a mechanical or electric mower.
+202;news anchoring;Delivering news stories as a television or radio host.
+203;opening bottle;Twisting or using a bottle opener to open a bottle.
+204;opening present;Removing the wrapping paper from a gift.
+205;paragliding;A recreational and competitive flying sport using a lightweight glider.
+206;parasailing;A recreational activity that involves being towed behind a boat while attached to a parachute-like canopy.
+207;parkour;A training discipline using movement that developed from military obstacle course training.
+208;passing American football (in game);Throwing an American football to a teammate during a game.
+209;passing American football (not in game);Throwing an American football to a teammate outside of a game or practice.
+210;peeling apples;Removing the outer layer of an apple with a knife or peeler.
+211;peeling potatoes;Removing the outer layer of a potato with a knife or peeler.
+212;petting animal (not cat);Stroking or caressing an animal that is not a cat.
+213;petting cat;Stroking or caressing a domestic cat.
+214;picking fruit;Harvesting ripe fruits from trees or plants.
+215;planting trees;Putting a tree or sapling in the ground for growth.
+216;plastering;Covering a surface with plaster to create a smooth finish.
+217;playing accordion;Performing music on a handheld musical instrument with bellows and a keyboard.
+218;playing badminton;Playing a racquet sport in which players hit a shuttlecock over a net.
+219;playing bagpipes;Performing music on a Scottish instrument with a bag and pipes.
+220;playing basketball;Playing a team sport in which two teams of five players each try to score points by throwing a ball through a hoop.
+221;playing bass guitar;Performing music on a stringed instrument with four strings and a long neck.
+222;playing cards;Playing games using a deck of cards, such as poker or blackjack.
+223;playing cello;Performing music on a bowed string instrument with a deep tone.
+224;playing chess;Playing a strategic board game for two players using pieces to attack and defend.
+225;playing clarinet;Performing music on a woodwind instrument with a single reed and a cylindrical bore.
+226;playing controller;Using a gamepad or joystick to play video games on a console or computer.
+227;playing cricket;Playing a bat-and-ball game between two teams of eleven players.
+228;playing cymbals;Performing music on a percussion instrument consisting of two circular metal plates struck together.
+229;playing didgeridoo;Playing a wind instrument traditionally made by Indigenous Australians.
+230;playing drums;Performing music on percussion instruments played with drumsticks or hands.
+231;playing flute;Playing the flute, a musical instrument with a tube-shaped body and finger holes.
+232;playing guitar;Playing the guitar, a stringed instrument with a flat body and a long neck with frets.
+233;playing harmonica;Playing the harmonica, a small, handheld musical instrument that is played by blowing air into it and moving it back and forth to create different notes.
+234;playing harp;Playing the harp, a large, stringed musical instrument that is played by plucking the strings with the fingers.
+235;playing ice hockey;Playing ice hockey, a team sport played on ice where players skate around and try to shoot a puck into the opposing team's net.
+236;playing keyboard;Playing the keyboard, a musical instrument with a row of keys that produce different notes and sounds when pressed.
+237;playing kickball;Playing kickball, a game similar to baseball where players kick a large rubber ball and run around a diamond-shaped field.
+238;playing monopoly;Playing Monopoly, a board game where players move around the board buying and selling properties, collecting rent, and trying to bankrupt their opponents.
+239;playing organ;Playing the organ, a large musical instrument with a keyboard and pipes that produce different sounds and notes when played.
+240;playing paintball;Playing paintball, a recreational sport where players shoot each other with paint-filled pellets using air-powered guns.
+241;playing piano;Playing the piano, a musical instrument with a keyboard and hammers that strike strings to produce different notes and sounds.
+242;playing poker;Playing poker, a card game where players bet on the value of their cards and try to have the best hand at the end of the game.
+243;playing recorder;Playing the recorder, a musical instrument with a whistle mouthpiece and finger holes that is commonly used in schools and beginner music classes.
+244;playing saxophone;Playing the saxophone, a musical instrument with a curved body and a single-reed mouthpiece that produces a smooth, jazzy sound.
+245;playing squash or racquetball;Playing squash or racquetball, a racket sport played in a closed court where players hit a ball against the front wall and try to make it difficult for their opponent to return it.
+246;playing tennis;Playing tennis, a racket sport played on a rectangular court where players hit a ball back and forth over a net, trying to make it difficult for their opponent to return it.
+247;playing trombone;Playing the trombone, a musical instrument with a long, curved body and a slide mechanism that produces different notes and sounds when moved back and forth.
+248;playing trumpet;Playing the trumpet, a musical instrument with a brass body and three valves that produce different notes and sounds when pressed.
+249;playing ukulele;Playing the ukulele, a small, stringed musical instrument with four nylon strings that is commonly associated with Hawaiian music.
+250;playing violin;Playing the violin, a stringed musical instrument with a hollow body and four strings that is played with a bow.
+251;playing volleyball;A team sport in which two teams of six players are separated by a net and try to score points by grounding the ball on the other team's court.
+252;playing xylophone;Playing a percussion instrument consisting of a set of wooden bars of various lengths that are struck by mallets to produce musical tones.
+253;pole vault;A track and field event in which a person uses a long, flexible pole to leap over a high bar.
+254;presenting weather forecast;A person presenting current and future weather conditions to the public via television, radio, or other media.
+255;pull ups;An exercise in which a person hangs from a bar with arms extended and then pulls the body up towards the bar until the chin is above it.
+256;pumping fist;Making a fist and quickly thrusting it forward in a gesture of excitement or triumph.
+257;pumping gas;Refilling a vehicle's fuel tank at a gas station by operating the fuel pump.
+258;punching bag;A cylindrical or pear-shaped bag filled with sand or other material that is hung from a ceiling or stand and used for punching practice or exercise.
+259;punching person (boxing);Striking an opponent with a closed fist in a regulated boxing match.
+260;push up;An exercise in which a person lowers their body from a plank position to the ground and then pushes back up to the starting position, using their arms and chest muscles.
+261;pushing car;Using physical force to move a car that is not running or cannot be driven.
+262;pushing cart;Using physical force to move a cart, typically one used for transporting goods.
+263;pushing wheelchair;Using physical force to move a wheelchair, typically with someone sitting in it who is unable to move themselves.
+264;reading book;Looking at written words and interpreting their meaning to gain knowledge or enjoyment.
+265;reading newspaper;Looking at printed news articles and stories in a physical or digital newspaper.
+266;recording music;Capturing and storing sounds, typically using digital or analog technology, with the intent of creating a musical work or capturing a live performance.
+267;riding a bike;Sitting on and pedaling a bicycle to propel it forward.
+268;riding camel;Sitting on and directing a camel, a large mammal with a humped back and long legs, commonly used as a mode of transportation in arid regions.
+269;riding elephant;Sitting on and directing an elephant, a large mammal with a long trunk and tusks, commonly used as a mode of transportation or for tourism purposes in some countries.
+270;riding mechanical bull;Sitting on and attempting to maintain balance on a mechanical device that simulates the movements of a bull, often used for entertainment purposes.
+271;riding mountain bike;Sitting on and pedaling a bicycle designed for off-road use, typically with wide tires and suspension.
+272;riding mule;Sitting on and directing a mule, a hybrid animal bred from a male donkey and a female horse, commonly used as a pack animal in mountainous regions.
+273;riding or walking with horse;Sitting on and directing a horse, a large mammal commonly used for transportation, sport, or work purposes. Walking alongside a horse while leading it by a rope or rein.
+274;riding scooter;Standing on and using a scooter, typically propelled by kicking off the ground and gliding on two or three wheels.
+275;riding unicycle;Sitting on and pedaling a one-wheeled bicycle, typically with the rider's balance maintained through constant motion and adjustments.
+276;ripping paper;Tearing paper by hand or using tools, often to create a desired shape or effect.
+277;robot dancing;Performing dance moves in a robotic manner, typically to electronic or hip hop music.
+278;rock climbing;Climbing up a rock face or indoor climbing wall using one's hands and feet, while wearing specialized equipment for safety.
+279;rock scissors paper;A hand game played by two people, where each person simultaneously forms one of three shapes (rock, scissors, or paper) with their hand and the outcome is determined based on which shapes are formed.
+280;roller skating;Moving on skates with wheels attached to the bottom, typically on a flat surface such as a roller rink or sidewalk.
+281;running on treadmill;Running on a stationary machine with a conveyor belt that allows the user to simulate running or walking while staying in one place.
+282;sailing;Controlling and navigating a sailboat over water using wind as a power source.
+283;salsa dancing;A type of social dancing that involves partners, characterized by rhythmic movement and frequent turns.
+284;sanding floor;Using a mechanical tool to rub down and smooth the surface of a floor.
+285;scrambling eggs;Mixing and beating eggs in a container with a fork or whisk to combine the yolks and whites and create a textured, scrambled consistency.
+286;scuba diving;Swimming underwater while breathing compressed air through a special apparatus called a scuba tank.
+287;setting table;Placing plates, utensils, glasses, and other items on a table in preparation for a meal.
+288;shaking hands;Greeting someone by grasping and shaking their hand, often used in formal or professional settings.
+289;shaking head;Moving one's head back and forth, often used to express disagreement, confusion, or disapproval.
+290;sharpening knives;Using a sharpening tool to sharpen the edge of a blade to improve cutting ability.
+291;sharpening pencil;Using a pencil sharpener to sharpen a dull pencil, resulting in a pointed tip for improved writing or drawing.
+292;shaving head;Removing hair from the head using a razor or electric shaver.
+293;shaving legs;Removing hair from the legs using a razor or electric shaver.
+294;shearing sheep;Removing the wool from a sheep's body using an electric or manual tool, often done for wool production or to improve the animal's comfort.
+295;shining shoes;Using a polishing agent and a cloth to clean and shine the surface of a pair of shoes.
+296;shooting basketball;Throwing a basketball towards the hoop with the intention of scoring points.
+297;shooting goal (soccer);Kicking a soccer ball towards the goal with the intention of scoring points.
+298;shot put;A track and field event where a heavy metal ball is thrown as far as possible using a pushing motion.
+299;shoveling snow;Using a shovel to remove snow from a surface, such as a driveway or sidewalk.
+300;shredding paper;Using a shredding machine to cut paper into small pieces or strips for disposal or recycling.
+301;shuffling cards;Moving a deck of cards around in a specific way, often used to prepare for a card game.
+302;side kick;A kick executed by extending the leg out to the side of the body.
+303;sign language interpreting;Translating spoken language into sign language for people who are deaf or hard of hearing.
+304;singing;Making musical sounds with the voice, often accompanied by rhythm and melody.
+305;situp;A physical exercise that involves lying on one's back, sitting up, and then lying down again repeatedly.
+306;skateboarding;A sport that involves riding a board with wheels and performing tricks, often in a skate park or on the street.
+307;ski jumping;A winter sport in which a skier goes down a ramp and jumps off a high point to perform acrobatic maneuvers in the air before landing.
+308;skiing (not slalom or crosscountry);A winter sport that involves sliding on skis over snow or ice, often on a ski resort.
+309;skiing crosscountry;A winter sport that involves skiing over long distances across snowy terrain.
+310;skiing slalom;A winter sport that involves skiing down a course marked by poles in a zigzag pattern.
+311;skipping rope;Jumping over a rope that is swung so that it passes under one's feet and over one's head.
+312;skydiving;Jumping out of an airplane or helicopter with a parachute and freefalling before opening the parachute to slow the descent and land safely.
+313;slacklining;Balancing on a narrow, flexible piece of webbing that is anchored between two points, often performed as an extreme sport or for recreation.
+314;slapping;Hitting something or someone with an open hand, often as a form of punishment or to express disapproval.
+315;sled dog racing;A winter sport that involves dogs pulling a sled over snow or ice, often in a race against other teams.
+316;smoking;Inhaling and exhaling smoke from burning tobacco or other substances, often for recreational or social reasons.
+317;smoking hookah;A method of smoking tobacco that involves using a water pipe and a flavored tobacco mixture.
+318;snatch weight lifting;A weightlifting exercise in which a barbell is lifted from the ground to overhead in one motion.
+319;sneezing;Expelling air forcibly through the nose and mouth due to irritation of the nasal passages.
+320;sniffing;Inhaling through the nose to detect a smell or to clear the nasal passages.
+321;snorkeling;Swimming on or through a body of water while wearing a diving mask and breathing through a snorkel, which is a short tube that extends above the water's surface.
+322;snowboarding;Riding on a snowboard over snow, usually on a ski slope or in a snow park, using gravity to glide downhill.
+323;snowkiting;Using a kite to be propelled over snow while on a snowboard or skis.
+324;snowmobiling;Riding on a motorized vehicle designed for travel on snow or ice, usually in snowy terrain like mountains or forests.
+325;somersaulting;Performing a rolling motion in which a person tucks the head down and rolls forwards or backwards, typically in the air or on the ground.
+326;spinning poi;Performing a dance-like movement involving swinging tethered weights in rhythmical and geometric patterns.
+327;spray painting;Using a can of aerosol paint to create a fine mist of paint to cover a surface or create a design.
+328;spraying;Using a spray bottle or other device to dispense a liquid over a surface, typically for cleaning or gardening purposes.
+329;springboard diving;Diving from a springboard, a specialized diving board that provides extra bounce, typically used in competitive diving events.
+330;squat;Bending at the knees and hips to lower the body towards the ground while keeping the back straight, often used as an exercise or weightlifting technique.
+331;sticking tongue out;Protruding the tongue beyond the lips, often as an expression of playfulness or defiance.
+332;stomping grapes;Crushing grapes by stomping on them with the feet, typically used in winemaking.
+333;stretching arm;Extending the arm and holding it in position for a period of time to improve flexibility or reduce tension in the muscles.
+334;stretching leg;Extending the leg and holding it in position for a period of time to improve flexibility or reduce tension in the muscles.
+335;strumming guitar;Playing a guitar by sweeping or brushing the strings with a pick or fingers to produce a series of chords or notes.
+336;surfing crowd;Moving through a crowded space, such as a concert or festival, while navigating through the people and enjoying the atmosphere.
+337;surfing water;Riding on the surface of waves while standing on a surfboard, often in the ocean or other large bodies of water.
+338;sweeping floor;Using a broom or other device to remove dirt, dust, and debris from the surface of a floor.
+339;swimming backstroke;A swimming stroke where the swimmer is lying on their back and moving their arms and legs in a synchronized motion to propel themselves through the water.
+340;swimming breast stroke;A swimming stroke where the swimmer is lying on their front and moving their arms and legs in a synchronized motion to propel themselves through the water.
+341;swimming butterfly stroke;A swimming stroke that involves the swimmer moving their arms in a circular motion while kicking their legs in a dolphin-like motion.
+342;swing dancing;A partnered dance style that originated in the 1920s and 30s, characterized by an emphasis on rhythm and improvisation.
+343;swinging legs;The act of swinging one's legs back and forth while sitting or lying down.
+344;swinging on something;The act of holding onto something and moving back and forth while suspended in the air, such as on a swing or hammock.
+345;sword fighting;A form of combat using swords, often practiced as a sport or for theatrical performances.
+346;tai chi;A Chinese martial art that involves slow, controlled movements and deep breathing, often practiced for its health benefits.
+347;taking a shower;The act of cleaning oneself by standing under a stream of water from a showerhead.
+348;tango dancing;A partnered dance style that originated in Argentina and Uruguay, characterized by close embrace and intricate footwork.
+349;tap dancing;A dance style that involves rhythmic tapping of the feet to create a percussion-like sound.
+350;tapping guitar;The act of tapping on the strings of a guitar to create percussive sounds, often used in modern fingerstyle guitar playing.
+351;tapping pen;The act of repeatedly hitting or clicking a pen against a surface, often done as a nervous habit or as a way to keep time.
+352;tasting beer;The act of sampling and evaluating the flavor, aroma, and texture of a beer, often done by beer enthusiasts or professionals.
+353;tasting food;The act of sampling and evaluating the flavor, texture, and presentation of food, often done by food critics or professionals.
+354;testifying;The act of giving a formal statement or evidence under oath in a court of law or other legal proceedings.
+355;texting;The act of sending written messages or communicating with others using a mobile device or computer.
+356;throwing axe;The act of hurling an axe at a target, often done as a sport or for recreational purposes.
+357;throwing ball;The act of propelling a ball through the air using one's hand or other body part, often done as a sport or game.
+358;throwing discus;The act of throwing a discus, a heavy circular object, for distance or accuracy, often done as a sport.
+359;tickling;The act of lightly touching or stroking someone's body to cause a tickling sensation and evoke laughter.
+360;tobogganing;The act of sliding down a snow-covered hill or slope while sitting on a sled or toboggan.
+361;tossing coin;Flipping a coin into the air and catching it with your hand.
+362;tossing salad;Mixing salad ingredients by throwing them into the air and catching them in a bowl.
+363;training dog;Teaching a dog new skills or behaviors through repetition and positive reinforcement.
+364;trapezing;Performing acrobatic maneuvers while swinging back and forth on a trapeze.
+365;trimming or shaving beard;Using a razor or trimmer to remove excess hair from the face.
+366;trimming trees;Cutting or pruning branches and foliage from trees to promote healthy growth.
+367;triple jump;Performing a track and field event that involves three consecutive jumps: a hop, a step, and a jump.
+368;tying bow tie;Creating a knot in the shape of a bow in a necktie or ribbon worn around the neck.
+369;tying knot (not on a tie);Creating a secure fastening by looping and tying a length of rope, string, or other material.
+370;tying tie;Creating a knot in a necktie or similar accessory worn around the neck.
+371;unboxing;Opening a box or package to reveal its contents.
+372;unloading truck;Removing items from a truck or other vehicle and placing them in a designated location.
+373;using computer;Interacting with a computer system through a keyboard, mouse, or other input device.
+374;using remote controller (not gaming);Operating a remote control to adjust the settings or functions of a device, such as a television or stereo system.
+375;using segway;Riding a self-balancing personal transportation device that uses gyroscopic technology to remain upright.
+376;vault;Performing a gymnastics event that involves propelling oneself over a vaulting horse or other apparatus.
+377;waiting in line;Standing in a designated queue or line while waiting for a service or to make a purchase.
+378;walking the dog;Exercising a dog by taking it for a walk on a leash.
+379;washing dishes;Cleaning and sanitizing dishes, utensils, and cookware in a sink or dishwasher.
+380;washing feet;Cleansing and massaging the feet with soap and water, often as part of a hygiene routine or personal care practice.
+381;washing hair;Rubbing shampoo onto hair and lathering it up, then rinsing it out with water and possibly conditioning hair afterwards.
+382;washing hands;Rubbing hands together with soap under running water for at least 20 seconds, then rinsing hands and drying them.
+383;water skiing;Being pulled behind a boat while standing on skis and navigating through the water.
+384;water sliding;Riding a slide that is usually made of plastic and is designed to be slippery and wet, often found at water parks.
+385;watering plants;Pouring water onto plants in order to keep them hydrated and healthy.
+386;waxing back;Applying wax onto the back and then quickly pulling off the wax strips to remove hair.
+387;waxing chest;Applying wax onto the chest and then quickly pulling off the wax strips to remove hair.
+388;waxing eyebrows;Applying wax onto the eyebrows and then quickly pulling off the wax strips to remove hair and shape the eyebrows.
+389;waxing legs;Applying wax onto the legs and then quickly pulling off the wax strips to remove hair.
+390;weaving basket;Using a variety of materials to create a woven basket for storage or decoration.
+391;welding;Joining two pieces of metal together by heating them to a high temperature and then fusing them with a filler metal.
+392;whistling;Making a high-pitched sound by forcing air through puckered lips or by using fingers to make a similar sound.
+393;windsurfing;Standing on a board and using a sail to catch the wind and move through the water.
+394;wrapping present;Covering a gift with decorative paper, often adding bows or other embellishments for a festive touch.
+395;wrestling;Engaging in physical combat with an opponent, attempting to pin them to the ground or force them into submission.
+396;writing;Using a pen, pencil, or other writing instrument to create words or images on paper or a digital medium.
+397;yawning;Inhaling deeply and exhaling audibly, often as a sign of tiredness or boredom.
+398;yoga;Engaging in physical and mental practices that focus on relaxation, meditation, and stretching.
+399;zumba;Participating in a fitness program that combines elements of dance and aerobics, often set to upbeat music.

@@ -1,0 +1,59 @@
+resume:
+test: /path/to/checkpoint/last_model.pt
+pretrain:
+shifter:
+seed: 3407
+data:
+    dataset: hmdb51
+    modality: RGB
+    num_segments: 16
+    num_feature: 8
+    seg_length: 1
+    batch_size: 32
+    workers: 10
+    num_classes: 51
+    image_tmpl: 'img_{:05d}.jpg'
+    train_root:
+    train_list: 'lists/hmdb51/train.txt'
+    val_root:
+    val_list: 'lists/hmdb51/val.txt'
+    label_list: 'lists/hmdb51_labels.csv'
+    input_size: 224
+    num_restoration: 1
+    randaug:
+        N: 2 #2
+        M: 9  #9
+    random_shift: True
+    exp_name: Text2Vis
+network:
+    arch: ViT-B/32  #ViT-B/32 ViT-B/16
+    init: True
+    tm: False  # False tsm tokent1d tokenshift
+    drop_out: 0.0
+    emb_dropout: 0.0
+    type: clip_hmdb
+    Project: Text2Vis
+    sim_header: Transf  # Transf   None
+    joint_st: False
+    drop: 0
+    fix_text: True
+    fix_video: False
+    text_moda: 'enhance' #enhance
+    shifter: False
+    test: True
+    use_restoration: True
+solver:
+    type: cosine
+    epochs: 30
+    start_epoch: 0
+    epoch_offset: 0
+    optim: adamw
+    lr: 5.e-5
+    lr_warmup_step: 5
+    weight_decay: 0.2
+    loss_type: CE
+    clip_ratio: 0.1
+    grad_accumulation_steps: 1
+logging:
+    print_freq: 10
+    eval_freq: 1

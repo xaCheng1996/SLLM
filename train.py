@@ -4,44 +4,40 @@ import time
 import argparse
 
 import torch
-import torch.nn as nn
 from torch.utils.data import DataLoader
-from torch.nn.parallel import DistributedDataParallel
-import torch.distributed as dist
 import torch.backends.cudnn as cudnn
 from torch.cuda.amp import GradScaler
 import torchvision
 import torch.optim as optim
-from utils.utils import init_distributed_mode, AverageMeter, reduce_tensor, accuracy
+from utils.utils import AverageMeter, reduce_tensor, accuracy
 from utils.logger import setup_logger
 import clip
-
+from tqdm import tqdm
 from pathlib import Path
 import yaml
 import pprint
 from dotmap import DotMap
 import numpy as np
-
+import wandb
 import datetime
 import shutil
 from contextlib import suppress
-
 
 from datasets import Video_dataset
 from modules.video_clip import video_header, VideoCLIP
 from utils.Augmentation import get_augmentation
 from utils.solver import _lr_scheduler
 from modules.text_prompt import text_prompt
-
-
+import torch.nn.functional as F
 
 
 def epoch_saving(epoch, model, optimizer, filename):
     torch.save({
-                    'epoch': epoch,
-                    'model_state_dict': model.state_dict(),
-                    'optimizer_state_dict': optimizer.state_dict(),
-                    }, filename) #just change to your preferred folder/filename
+        'epoch': epoch,
+        'model_state_dict': model.state_dict(),
+        'optimizer_state_dict': optimizer.state_dict(),
+    }, filename)  # just change to your preferred folder/filename
+
 
 def best_saving(working_dir, epoch, model, optimizer):
     best_name = '{}/model_best.pt'.format(working_dir)
@@ -58,53 +54,44 @@ def update_dict(dict):
         new_dict[k.replace('module.', '')] = v
     return new_dict
 
+
 def get_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', '-cfg', type=str, default='clip.yaml', help='global config file')
     parser.add_argument('--log_time', default='001')
-    parser.add_argument('--dist_url', default='env://',
-                        help='url used to set up distributed training')
-    parser.add_argument('--world_size', default=1, type=int,
-                        help='number of distributed processes')                        
-    parser.add_argument("--local_rank", type=int,
-                        help='local rank for DistributedDataParallel')
     parser.add_argument(
         "--precision",
         choices=["amp", "fp16", "fp32"],
         default="amp",
         help="Floating point precition."
-    )                        
+    )
     args = parser.parse_args()
     return args
-
 
 
 def main(args):
     global best_prec1
     """ Training Program """
-    init_distributed_mode(args)
-    if args.distributed:
-        print('[INFO] turn on distributed train', flush=True)
-    else:
-        print('[INFO] turn off distributed train', flush=True)
 
     with open(args.config, 'r') as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
-    if 'shot' in config['data']:
-        working_dir = os.path.join('./exp_fewshot', config['data']['dataset'], config['network']['arch'] , args.log_time)
-    else:
-        working_dir = os.path.join('./exp', config['data']['dataset'], config['network']['arch'] , args.log_time)
+    working_dir = os.path.join('./Text2vis_model/', config['data']['dataset'], config['network']['arch'],
+                               config['data']['exp_name'])
 
-    if dist.get_rank() == 0:
-        Path(working_dir).mkdir(parents=True, exist_ok=True)
-        shutil.copy(args.config, working_dir)
-        shutil.copy('train.py', working_dir)
-
+    Path(working_dir).mkdir(parents=True, exist_ok=True)
+    shutil.copy(args.config, working_dir)
+    shutil.copy('train.py', working_dir)
+    wandb.init(dir='./wandb',
+               project=config['network']['Project'],
+               name='{}_{}_{}_{}_{}'.format(args.log_time,
+                                            config['network']['type'],
+                                            config['network']['arch'],
+                                            config['data']['dataset'],
+                                            config['data']['exp_name']))
 
     # build logger, print env and config
     logger = setup_logger(output=working_dir,
-                          distributed_rank=dist.get_rank(),
                           name=f'Text4Vis')
     logger.info("------------------------------------")
     logger.info("Environment Versions:")
@@ -117,8 +104,6 @@ def main(args):
     logger.info("------------------------------------")
     logger.info("storing name: {}".format(working_dir))
 
-
-
     config = DotMap(config)
 
     device = "cpu"
@@ -127,89 +112,60 @@ def main(args):
         cudnn.benchmark = True
 
     # fix the seed for reproducibility
-    seed = config.seed + dist.get_rank()
+    seed = config.seed
     torch.manual_seed(seed)
     np.random.seed(seed)
 
     # get fp16 model and weight
     model, clip_state_dict = clip.load(
         config.network.arch,
-        device='cpu',jit=False,
+        device='cpu', jit=False,
         internal_modeling=config.network.tm,
         T=config.data.num_segments,
         dropout=config.network.drop_out,
         emb_dropout=config.network.emb_dropout,
         pretrain=config.network.init,
-        joint_st=config.network.joint_st) # Must set jit=False for training
+        joint_st=config.network.joint_st)  # Must set jit=False for training
 
     transform_train = get_augmentation(True, config)
     transform_val = get_augmentation(False, config)
 
-    # if config.data.randaug.N:
-    #     transform_train = randAugment(transform_train, config)
-
     logger.info('train transforms: {}'.format(transform_train.transforms))
     logger.info('val transforms: {}'.format(transform_val.transforms))
-
 
     video_head = video_header(
         config.network.sim_header,
         clip_state_dict)
 
- 
     if args.precision == "amp" or args.precision == "fp32":
         model = model.float()
-
 
     train_data = Video_dataset(
         config.data.train_root, config.data.train_list,
         config.data.label_list, num_segments=config.data.num_segments,
         modality=config.data.modality,
         image_tmpl=config.data.image_tmpl, random_shift=config.data.random_shift,
-        transform=transform_train, dense_sample=config.data.dense)
- 
-    ################ Few-shot data for training ###########
-    if config.data.shot:
-        cls_dict = {}
-        for item  in train_data.video_list:
-            if item.label not in cls_dict:
-                cls_dict[item.label] = [item]
-            else:
-                cls_dict[item.label].append(item)
-        import random
-        select_vids = []
-        K = config.data.shot
-        for category, v in cls_dict.items():
-            slice = random.sample(v, K)
-            select_vids.extend(slice)
-        n_repeat = len(train_data.video_list) // len(select_vids)
-        train_data.video_list = select_vids * n_repeat
-        # print('########### number of videos: {} #########'.format(len(select_vids)))
-    ########################################################
+        transform=transform_train, dense_sample=config.data.dense, use_restoration=config.network.use_restoration)
 
-
-
-    train_sampler = torch.utils.data.distributed.DistributedSampler(train_data)                       
     train_loader = DataLoader(train_data,
-        batch_size=config.data.batch_size, num_workers=config.data.workers,
-        sampler=train_sampler, drop_last=False)
+                              batch_size=config.data.batch_size, num_workers=config.data.workers,
+                              shuffle=True, pin_memory=False, drop_last=True)
 
     val_data = Video_dataset(
         config.data.val_root, config.data.val_list, config.data.label_list,
         random_shift=False, num_segments=config.data.num_segments,
         modality=config.data.modality,
         image_tmpl=config.data.image_tmpl,
-        transform=transform_val, dense_sample=config.data.dense)
-    val_sampler = torch.utils.data.distributed.DistributedSampler(val_data)
+        transform=transform_val, dense_sample=config.data.dense, use_restoration=config.network.use_restoration)
+
     val_loader = DataLoader(val_data,
-        batch_size=config.data.batch_size,num_workers=config.data.workers,
-        sampler=val_sampler, drop_last=False)
+                            batch_size=config.data.batch_size, num_workers=config.data.workers,
+                            shuffle=False, pin_memory=False, drop_last=True)
 
+    classes, _, text_dict = text_prompt(train_data, prompt_mode=config.network.text_moda)
 
-    classes, _, text_dict = text_prompt(train_data)
-    n_class = text_dict[0].size(0)
-    #### generate classes feature ######
-    class_feats_file = 'text_feats_{}_{}.pt'.format(config['data']['dataset'], config['network']['arch']).replace('/','')
+    class_feats_file = 'text_feats_{}_{}.pt'.format(config['data']['dataset'], config['network']['arch']).replace('/',
+                                                                                                                  '')
     if os.path.isfile(class_feats_file):
         logger.info('=> load classes features from {}'.format(class_feats_file))
         classes_features = torch.load(class_feats_file)
@@ -217,31 +173,16 @@ def main(args):
         model.eval()
         with torch.no_grad():
             classes_features = model.encode_text(classes)  # [n_class dim]
-        # if dist.get_rank() == 0:
-        #     torch.save(classes_features.cpu(), class_feats_file)
-    
-    # random init
-    # classes_features = torch.empty(n_class, config.network.n_emb)
-    # nn.init.normal_(classes_features, std=1)
 
-    # distilbert init
-    # classes_features = torch.load('distilbert-base-k400.pt')
 
-    # QR init
-    # normal_init = np.array(np.random.normal(size=(config.network.n_emb,config.network.n_emb)), dtype='float32')
-    # qq, rr = np.linalg.qr(normal_init, mode="complete")
-    # classes_features = torch.tensor(qq[:n_class])
-
-    # LDA init
-    # classes_features = torch.load('lda_0.1.pt').float()
-
-    model_full = VideoCLIP(model, video_head, config.data.num_segments)
-
+    model_full = VideoCLIP(model, video_head, config.data.num_feature, config.network.use_restoration)
 
     criterion = torch.nn.CrossEntropyLoss()
+    criterion_kl = torch.nn.KLDivLoss(reduction="batchmean")
+    criterion_mse = torch.nn.MSELoss()
 
     start_epoch = config.solver.start_epoch
-    
+
     if config.pretrain:
         if os.path.isfile(config.pretrain):
             logger.info("=> loading checkpoint '{}'".format(config.pretrain))
@@ -250,7 +191,7 @@ def main(args):
             del checkpoint
         else:
             logger.info("=> no checkpoint found at '{}'".format(config.resume))
-    
+
     if config.resume:
         if os.path.isfile(config.resume):
             logger.info("=> loading checkpoint '{}'".format(config.resume))
@@ -263,149 +204,231 @@ def main(args):
         else:
             logger.info("=> no checkpoint found at '{}'".format(config.pretrain))
 
+    if config.network.test:
+        filename = config.test
+        print(("=> loading test checkpoint '{}'".format(filename)))
+        checkpoint = torch.load(filename)
+        visual_state_dict = {}
+        fusion_state_dict = {}
+        logit_scale_state_dict = {}
+        restore_state_dict = {}
+        res_frame_emb = {}
+        for k, v in checkpoint['model_state_dict'].items():
+            if 'visual' in k:
+                visual_state_dict[k[7:]] = v
+            elif 'logit_scale' in k:
+                logit_scale_state_dict[k] = v
+            elif 'fusion' in k:
+                fusion_state_dict[k[13:]] = v
+            elif 'restore_model' in k:
+                restore_state_dict[k[14:]] = v
+            else:
+                res_frame_emb[k] = v
+        model_full.visual.load_state_dict(visual_state_dict)
+        model_full.logit_scale.data = logit_scale_state_dict['logit_scale']
+        model_full.fusion_model.load_state_dict(fusion_state_dict)
+        if config.network.use_restoration:
+            model_full.restore_model.load_state_dict(restore_state_dict)
+            model_full.restore_frame_position_embeddings.data = res_frame_emb['restore_frame_position_embeddings.weight']
+        del checkpoint
 
-
+    if config.network.shifter and not config.resume:
+        filename = config.shifter
+        print(("=> loading base checkpoint '{}'".format(filename)))
+        checkpoint = torch.load(filename)
+        visual_state_dict = {}
+        fusion_state_dict = {}
+        logit_scale_state_dict = {}
+        for k, v in checkpoint['model_state_dict'].items():
+            if 'visual' in k:
+                visual_state_dict[k[7:]] = v
+            elif 'logit_scale' in k:
+                logit_scale_state_dict[k] = v
+            elif 'fusion' in k:
+                fusion_state_dict[k[13:]] = v
+        model_full.visual.load_state_dict(visual_state_dict)
+        model_full.logit_scale.data = logit_scale_state_dict['logit_scale']
+        model_full.fusion_model.load_state_dict(fusion_state_dict)
+        del checkpoint
 
     clip_params = []
+    restore_params = []
     other_params = []
-    for name, param in model_full.named_parameters():      
+    for name, param in model_full.named_parameters():
         if 'visual' in name and 'control_point' not in name:
             clip_params.append(param)
         elif 'logit_scale' in name:
             clip_params.append(param)
+        elif 'restore' in name:
+            restore_params.append(param)
         else:
             other_params.append(param)
-    optimizer = optim.AdamW([{'params': clip_params, 'lr': config.solver.lr * config.solver.clip_ratio}, 
-                            {'params': other_params, 'lr': config.solver.lr}],
-                            betas=(0.9, 0.999), lr=config.solver.lr, eps=1e-8,
-                            weight_decay=config.solver.weight_decay) 
+
+    if config.network.shifter:
+        optimizer = optim.AdamW([
+                                {'params': other_params, 'lr': config.solver.lr * config.solver.clip_ratio},
+                                {'params': restore_params, 'lr': config.solver.lr},
+                                ],
+                                betas=(0.9, 0.999), lr=config.solver.lr, eps=1e-8,
+                                weight_decay=config.solver.weight_decay)
+    else:
+        optimizer = optim.AdamW([{'params': clip_params, 'lr': config.solver.lr * config.solver.clip_ratio},
+                                 {'params': other_params, 'lr': config.solver.lr}],
+                                betas=(0.9, 0.999), lr=config.solver.lr, eps=1e-8,
+                                weight_decay=config.solver.weight_decay)
 
     lr_scheduler = _lr_scheduler(config, optimizer)
 
-    if args.distributed:
-        model_full = DistributedDataParallel(model_full.cuda(), device_ids=[args.gpu])
-        model_without_ddp = model_full.module
+    model_full = model_full.cuda()
 
+    best_prec1 = 0.0
+    if config.network.test:
+        prec1 = validate(0, val_loader, device, model_full, config, classes_features, logger)
+        best_prec1 = 0.0
+        logger.info('Testing: {}/{}'.format(prec1, best_prec1))
+        exit()
 
     scaler = GradScaler() if args.precision == "amp" else None
 
 
-    best_prec1 = 0.0
-    if config.solver.evaluate:
-        logger.info(("===========evaluate==========="))
-        prec1 = validate(
-            start_epoch,
-            val_loader, device, 
-            model_full, config, classes_features, logger)
-        return
-
-
 
     for epoch in range(start_epoch, config.solver.epochs):
-        if args.distributed:
-            train_loader.sampler.set_epoch(epoch)        
 
-        train(model_full, train_loader, optimizer, criterion, scaler,
-              epoch, device, lr_scheduler, config, classes_features, logger)
+        classes_features = classes_features.cuda()
+        if config.network.use_restoration:
+            train(model_full, train_loader, optimizer, criterion, scaler,
+                  epoch, device, lr_scheduler, config, classes_features, logger, criterion_kl=criterion_kl, criterion_mse=criterion_mse)
+        else:
+            train(model_full, train_loader, optimizer, criterion, scaler,
+                  epoch, device, lr_scheduler, config, classes_features, logger)
 
-        if (epoch+1) % config.logging.eval_freq == 0:  # and epoch>0
+        if (epoch + 1) % config.logging.eval_freq == 0:  # and epoch>0
             prec1 = validate(epoch, val_loader, device, model_full, config, classes_features, logger)
 
-            if dist.get_rank() == 0:
-                is_best = prec1 > best_prec1
-                best_prec1 = max(prec1, best_prec1)
-                logger.info('Testing: {}/{}'.format(prec1,best_prec1))
-                logger.info('Saving:')
-                filename = "{}/last_model.pt".format(working_dir)
+            is_best = prec1 > best_prec1
+            best_prec1 = max(prec1, best_prec1)
+            logger.info('Testing: {}/{}'.format(prec1, best_prec1))
+            filename = "{}/last_model.pt".format(working_dir)
+            logger.info('Saving: {}'.format(filename))
 
-                epoch_saving(epoch, model_without_ddp, optimizer, filename)
-                if is_best:
-                    best_saving(working_dir, epoch, model_without_ddp, optimizer)
+            epoch_saving(epoch, model_full, optimizer, filename)
+            if is_best:
+                best_saving(working_dir, epoch, model_full, optimizer)
 
 
 def train(model, train_loader, optimizer, criterion, scaler,
-          epoch, device, lr_scheduler, config, text_embedding, logger):
+          epoch, device, lr_scheduler, config, text_embedding, logger, criterion_kl=None, criterion_mse=None):
     """ train a epoch """
     batch_time = AverageMeter()
     data_time = AverageMeter()
     losses = AverageMeter()
+    losses_kl = AverageMeter()
 
     model.train()
     autocast = torch.cuda.amp.autocast if args.precision == 'amp' else suppress
     end = time.time()
-    for i,(images, list_id) in enumerate(train_loader):
-        if config.solver.type != 'monitor':
-            if (i + 1) == 1 or (i + 1) % 10 == 0:
-                lr_scheduler.step(epoch + i / len(train_loader))
-        # lr_scheduler.step()
+    t_pre = 0
+    for i, (images, list_id, restoration_frame) in enumerate(tqdm(train_loader)):
 
+        optimizer.zero_grad()  # reset gradient
         data_time.update(time.time() - end)
         # b t3 h w
-        images = images.view((-1, config.data.num_segments, 3) + images.size()[-2:])  # bt 3 h w
-
+        images = images.view((-1, config.data.num_feature, 3) + images.size()[-2:])  # bt 3 h w
         b, t, c, h, w = images.size()
+        images = images.view(-1, c, h, w)
+        images = images.cuda()
 
-        images= images.view(-1, c, h, w) # omit the Image.fromarray if the images already in PIL format, change this line to images=list_image if using preprocess inside the dataset class
+        if config.network.use_restoration:
+            restoration_frame = restoration_frame.view((-1, config.data.num_feature - 1, 3) + images.size()[-2:])
+            _, _, c, h, w = restoration_frame.size()
+            restoration_frame = restoration_frame.view(-1, c, h, w)
+            restoration_frame = restoration_frame.cuda()
 
         with autocast():
-            logits = model(images, text_embedding) # B 400
-            loss = criterion(logits, list_id.to(device))
+            if config.network.use_restoration:
+                logits, image_restoration_embedding, image_restoration_target = \
+                    model(images, text_embedding, restoration_frame)
+
+                restoration_kl = F.log_softmax(
+                    image_restoration_embedding.view(b * (t - 1) * config.data.num_restoration, -1), dim=1)
+                restoration_target_kl = F.softmax(
+                    image_restoration_target.view(b * (t - 1) * config.data.num_restoration, -1), dim=1)
+                loss_kl = criterion_kl(restoration_kl, restoration_target_kl)
+
+                loss = criterion(logits, list_id.to(device)) + loss_kl
+                losses_kl.update(loss_kl.item(), logits.size(0))
+
+            else:
+                logits = model(images, text_embedding)  # B 400
+                loss = criterion(logits, list_id.to(device))
 
             # loss regularization
             loss = loss / config.solver.grad_accumulation_steps
 
-        if scaler is not None:
-            # back propagation
-            scaler.scale(loss).backward()
+            if scaler is not None:
+                # back propagation
+                scaler.scale(loss).backward()
 
-            if (i + 1) % config.solver.grad_accumulation_steps == 0:
-                scaler.step(optimizer)  
-                scaler.update()  
-                optimizer.zero_grad()  # reset gradient
-                
-        else:
-            # back propagation
-            loss.backward()
-            if (i + 1) % config.solver.grad_accumulation_steps == 0:
-                optimizer.step()  # update param
-                optimizer.zero_grad()  # reset gradient
+                if (i + 1) % config.solver.grad_accumulation_steps == 0:
+                    scaler.step(optimizer)
+                    scaler.update()
+                    # optimizer.zero_grad()  # reset gradient
 
-        losses.update(loss.item(), logits.size(0))
+            else:
+                # back propagation
+                loss.backward()
+                if (i + 1) % config.solver.grad_accumulation_steps == 0:
+                    optimizer.step()  # update param
 
+            if config.solver.type != 'monitor':
+                if (i + 1) == 1 or (i + 1) % 10 == 0:
+                    lr_scheduler.step(epoch + i / len(train_loader))
 
-        batch_time.update(time.time() - end)
-        end = time.time()                
+            losses.update(loss.item(), logits.size(0))
 
+            batch_time.update(time.time() - end)
+            end = time.time()
 
-        cur_iter = epoch * len(train_loader) +  i
-        max_iter = config.solver.epochs * len(train_loader)
-        eta_sec = batch_time.avg * (max_iter - cur_iter + 1)
-        eta_sec = str(datetime.timedelta(seconds=int(eta_sec)))        
+            cur_iter = epoch * len(train_loader) + i
+            max_iter = config.solver.epochs * len(train_loader)
+            eta_sec = batch_time.avg * (max_iter - cur_iter + 1)
+            eta_sec = str(datetime.timedelta(seconds=int(eta_sec)))
 
-        if i % config.logging.print_freq == 0:
-            logger.info(('Epoch: [{0}][{1}/{2}], lr: {lr:.2e}, eta: {3}\t'
-                         'Time {batch_time.val:.3f} ({batch_time.avg:.3f})\t'
-                         'Data {data_time.val:.3f} ({data_time.avg:.3f})\t'
-                         'Loss {loss.val:.4f} ({loss.avg:.4f})'.format(
-                             epoch, i, len(train_loader), eta_sec, batch_time=batch_time, data_time=data_time, loss=losses,
-                             lr=optimizer.param_groups[-1]['lr'])))  # TODO
-
-
+            if i % config.logging.print_freq == 0:
+                wandb.log({"lr": optimizer.param_groups[-1]['lr']})
+                wandb.log({"loss_avg": losses.avg})
+                t_pos = time.time()
+                wandb.log({'vs': (b * config.logging.print_freq) / (t_pos - t_pre)})
+                t_pre = time.time()
 
 
 def validate(epoch, val_loader, device, model, config, text_embedding, logger):
     top1 = AverageMeter()
     top5 = AverageMeter()
     model.eval()
+    t_pos = 0
+    t_pre = 0
     with torch.no_grad():
-        for i, (image, class_id) in enumerate(val_loader):
-            image = image.view((-1, config.data.num_segments, 3) + image.size()[-2:])
+        simi = []
+        for i, (image, class_id, rest_img) in enumerate(tqdm(val_loader)):
+            image = image.view((-1, config.data.num_feature, 3) + image.size()[-2:])
             b, t, c, h, w = image.size()
             class_id = class_id.to(device)
             text_embedding = text_embedding.to(device)
             image = image.to(device).view(-1, c, h, w)
 
-            image_embedding = model.module.encode_image(image)
+            if config.network.use_restoration:
+
+                restoration_frame = rest_img.view((-1, config.data.num_feature - 1, 3) + image.size()[-2:])
+                _, _, c, h, w = restoration_frame.size()
+                restoration_frame = restoration_frame.view(-1, c, h, w)
+                restoration_frame = restoration_frame.cuda()
+
+                image_embedding = model.test(image, restoration_frame)
+            else:
+                image_embedding = model.test(image)
+
+
             image_embedding /= image_embedding.norm(dim=-1, keepdim=True)
             text_embedding /= text_embedding.norm(dim=-1, keepdim=True)
             similarity = (100.0 * image_embedding @ text_embedding.T)
@@ -416,20 +439,18 @@ def validate(epoch, val_loader, device, model, config, text_embedding, logger):
 
             top1.update(prec1.item(), class_id.size(0))
             top5.update(prec5.item(), class_id.size(0))
-
-            if i % config.logging.print_freq == 0:
-                logger.info(
-                    ('Test: [{0}/{1}]\t'
-                     'Prec@1 {top1.val:.3f} ({top1.avg:.3f})\t'
-                     'Prec@5 {top5.val:.3f} ({top5.avg:.3f})'.format(
-                         i, len(val_loader), top1=top1, top5=top5)))
-
+            if i % 10 == 0:
+                t_pos = time.time()
+                wandb.log({'val vs': (b * 10) / (t_pos - t_pre)})
+                t_pre = time.time()
+    wandb.log({"epoch": epoch})
+    wandb.log({"top1": top1.avg})
+    wandb.log({"top5": top5.avg})
     logger.info(('Testing Results: Prec@1 {top1.avg:.3f} Prec@5 {top5.avg:.3f}'
-        .format(top1=top1, top5=top5)))
+                 .format(top1=top1, top5=top5)))
     return top1.avg
 
 
 if __name__ == '__main__':
-    args = get_parser() 
+    args = get_parser()
     main(args)
-

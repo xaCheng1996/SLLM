@@ -1,15 +1,10 @@
-import torch
 import torch.utils.data as data
-import decord
 import os
 import numpy as np
 from numpy.random import randint
-import io
 import pandas as pd
-import random
 from PIL import Image
 import math
-import copy
 
 
 class VideoRecord(object):
@@ -22,7 +17,7 @@ class VideoRecord(object):
 
     @property
     def num_frames(self):
-        return int(self._data[1])
+        return int(self._data[1]) - 1
 
     @property
     def label(self):
@@ -34,7 +29,7 @@ class Video_dataset(data.Dataset):
                  num_segments=1, modality='RGB', new_length=1,
                  image_tmpl='img_{:05d}.jpg', transform=None,
                  random_shift=True, test_mode=False,
-                 index_bias=1, dense_sample=False, test_clips=3):
+                 index_bias=1, dense_sample=False, test_clips=3, use_restoration=False):
 
         self.root_path = root_path
         self.list_file = list_file
@@ -51,6 +46,8 @@ class Video_dataset(data.Dataset):
         self.sample_range = 128
         self.dense_sample = dense_sample  # using dense sample as I3D
         self.test_clips = test_clips
+        self.use_restoration = use_restoration
+
         if self.dense_sample:
             print('=> Using dense sample for the dataset...')
 
@@ -68,7 +65,7 @@ class Video_dataset(data.Dataset):
     
     @property
     def classes(self):
-        classes_all = pd.read_csv(self.labels_file)
+        classes_all = pd.read_csv(self.labels_file, sep=';')
         return classes_all.values.tolist()
     
     def _parse_list(self):
@@ -80,137 +77,101 @@ class Video_dataset(data.Dataset):
         self.video_list = [VideoRecord(item) for item in tmp]
         print('video number:%d' % (len(self.video_list)))
 
-    def _sample_indices(self, video_list):
-        if self.dense_sample:
-            sample_pos = max(1, 1 + len(video_list) - self.sample_range)
-            interval = self.sample_range // self.num_segments
-            start_idx = 0 if sample_pos == 1 else np.random.randint(0, sample_pos - 1)
-            base_offsets = np.arange(self.num_segments) * interval
-            offsets = (base_offsets + start_idx) % len(video_list)
-            return np.array(offsets) + self.index_bias
-        else:
-            if len(video_list) <= self.total_length:
-                if self.loop:
-                    return np.mod(np.arange(
-                        self.total_length) + randint(len(video_list) // 2),
-                        len(video_list)) + self.index_bias
-                offsets = np.concatenate((
-                    np.arange(len(video_list)),
-                    randint(len(video_list),
-                            size=self.total_length - len(video_list))))
-                return np.sort(offsets) + self.index_bias
-            offsets = list()
-            ticks = [i * len(video_list) // self.num_segments
-                    for i in range(self.num_segments + 1)]
+    def _sample_indices(self, record):
+        if record.num_frames <= self.total_length:
+            if self.loop:
+                return np.mod(np.arange(
+                    self.total_length) + randint(record.num_frames // 2),
+                    record.num_frames) + self.index_bias
+            offsets = np.concatenate((
+                np.arange(record.num_frames),
+                randint(record.num_frames,
+                        size=self.total_length - record.num_frames)))
+            return np.sort(offsets) + self.index_bias
+        offsets = list()
+        ticks = [i * record.num_frames // self.num_segments
+                for i in range(self.num_segments + 1)]
 
-            for i in range(self.num_segments):
-                tick_len = ticks[i + 1] - ticks[i]
-                tick = ticks[i]
-                if tick_len >= self.seg_length:
-                    tick += randint(tick_len - self.seg_length + 1)
-                offsets.extend([j for j in range(tick, tick + self.seg_length)])
-            return np.array(offsets) + self.index_bias
+        for i in range(self.num_segments):
+            tick_len = ticks[i + 1] - ticks[i]
+            tick = ticks[i]
+            if tick_len >= self.seg_length:
+                tick += randint(tick_len - self.seg_length + 1)
+            offsets.extend([j for j in range(tick, tick + self.seg_length)])
+        return np.array(offsets) + self.index_bias
 
-    def _get_val_indices(self, video_list):
-        if self.dense_sample:
-            sample_pos = max(1, 1 + len(video_list) - self.sample_range)
-            t_stride = self.sample_range // self.num_segments
-            start_idx = 0 if sample_pos == 1 else np.random.randint(0, sample_pos - 1)
-            offsets = [(idx * t_stride + start_idx) % len(video_list) for idx in range(self.num_segments)]
-            return np.array(offsets) + self.index_bias
-        else:
-            tick = len(video_list) / float(self.num_segments)
-            offsets = [int(tick * x) % len(video_list) for x in range(self.num_segments)]
-            return np.array(offsets) + self.index_bias
+    def _get_val_indices(self, record):
+        if self.num_segments == 1:
+            return np.array([record.num_frames // 2], dtype=np.int) + self.index_bias
 
+        if record.num_frames <= self.total_length:
+            if self.loop:
+                return np.mod(np.arange(self.total_length), record.num_frames) + self.index_bias
+            return np.array([i * record.num_frames // self.total_length
+                             for i in range(self.total_length)], dtype=np.int) + self.index_bias
+        offset = (record.num_frames / self.num_segments - self.seg_length) / 2.0
+        return np.array([i * record.num_frames / self.num_segments + offset + j
+                         for i in range(self.num_segments)
+                         for j in range(self.seg_length)], dtype=np.int) + self.index_bias
 
-    def _get_test_indices(self, video_list):
+    def _get_test_indices(self, record):
         if self.dense_sample:
             # multi-clip for dense sampling
             num_clips = self.test_clips
-            sample_pos = max(0, len(video_list) - self.sample_range)
+            sample_pos = max(0, record.num_frames - self.sample_range)
             interval = self.sample_range // self.num_segments
             start_list = [clip_idx * math.floor(sample_pos / (num_clips -1)) for clip_idx in range(num_clips)]
             base_offsets = np.arange(self.num_segments) * interval
             offsets = []
             for start_idx in start_list:
-                offsets.extend((base_offsets + start_idx) % len(video_list))
+                offsets.extend((base_offsets + start_idx) % record.num_frames)
             return np.array(offsets) + self.index_bias
         else:
             # multi-clip for uniform sampling
             num_clips = self.test_clips
-            tick = len(video_list) / float(self.num_segments)
+            tick = record.num_frames / float(self.num_segments)
             start_list = np.linspace(0, tick - 1, num=num_clips, dtype=int)
             offsets = []
             for start_idx in start_list.tolist():
                 offsets += [
-                    int(start_idx + tick * x) % len(video_list)
+                    int(start_idx + tick * x) % record.num_frames
                     for x in range(self.num_segments)
                 ]
             return np.array(offsets) + self.index_bias
 
-
-
-    def _decord_decode(self, video_path):
-        try:
-            container = decord.VideoReader(video_path)
-        except Exception as e:
-            print("Failed to decode {} with exception: {}".format(
-                video_path, e))
-            return None
-        
-        return container
-
     def __getitem__(self, index):
-        # decode frames to video_list
-        if self.modality == 'video':
-            _num_retries = 10
-            for i_try in range(_num_retries):
-                record = copy.deepcopy(self.video_list[index])
-                directory = os.path.join(self.root_path, record.path)
-                video_list = self._decord_decode(directory)
-                # video_list = self._decord_pyav(directory)
-                if video_list is None:
-                    print("Failed to decode video idx {} from {}; trial {}".format(
-                        index, directory, i_try)
-                    )
-                    index = random.randint(0, len(self.video_list))
-                    continue
-                break
-        else:
-            record = self.video_list[index]
-            video_list = os.listdir(os.path.join(self.root_path, record.path))
-
-        if not self.test_mode: # train/val
-            segment_indices = self._sample_indices(video_list) if self.random_shift else self._get_val_indices(video_list) 
-        else: # test
-            segment_indices = self._get_test_indices(video_list)
-
-        return self.get(record, video_list, segment_indices)
+        record = self.video_list[index]
+        segment_indices = self._sample_indices(record) if self.random_shift else self._get_val_indices(record)
+        return self.get(record, segment_indices)
 
 
     def _load_image(self, directory, idx):
-        if self.modality == 'RGB':
-            try:
-                return [Image.open(os.path.join(self.root_path, directory, self.image_tmpl.format(idx))).convert('RGB')]
-            except Exception:
-                print('error loading image:', os.path.join(self.root_path, directory, self.image_tmpl.format(idx)))
-                return [Image.open(os.path.join(self.root_path, directory, self.image_tmpl.format(1))).convert('RGB')]
+            return [Image.open(os.path.join(directory, self.image_tmpl.format(idx))).convert('RGB')]
 
 
-    def get(self, record, video_list, indices):
+    def get(self, record, indices):
+        restoration_data = []
         images = list()
-        for seg_ind in indices:
+        for i, seg_ind in enumerate(indices):
             p = int(seg_ind)
-            if self.modality == 'video':
-                seg_imgs = [Image.fromarray(video_list[p-1].asnumpy()).convert('RGB')]
-            else:
-                seg_imgs = self._load_image(record.path,p)
+            try:
+                seg_imgs = self._load_image(record.path, p)
+            except OSError:
+                print('ERROR: Could not read image "{}"'.format(record.path))
+                print('invalid indices: {}'.format(indices))
+                raise
             images.extend(seg_imgs)
-            if p < len(video_list):
-                p += 1
-        process_data, record_label = self.transform((images,record.label))
-        return process_data, record_label
+
+        if self.use_restoration:
+            images_process = [images[i] for i in range(len(images)) if i % 2 == 0]
+            images_restoration = [images[i] for i in range((len(images_process)-1)*2) if i % 2 != 0]
+            restoration_data = self.transform(images_restoration)
+        else:
+            images_process = images
+
+        process_data = self.transform(images_process)
+        return process_data, record.label, restoration_data
+
 
     def __len__(self):
         return len(self.video_list)
